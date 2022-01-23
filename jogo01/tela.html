@@ -48,6 +48,7 @@
             velocidade: 0,
             forcaDoPulo: 29.6,
             quantPulos: 0,
+            score: 0,
 
             atualização: function() {
                 this.velocidade += this.gravidade;
@@ -67,6 +68,15 @@
                 }
             },
 
+            reset: function() {
+                bloco.velocidade = 0;
+                bloco.y = 0;
+            },
+
+            score: function() {
+                
+            },
+
             desenha: function() {
                 ctx.fillStyle = this.cor;
                 ctx.fillRect(this.x, this.y, this.largura, this.altura);
@@ -81,7 +91,8 @@
             insere: function() {
                 this._obs.push({
                     x: LARGURA,
-                    largura: 30 + Math.floor(20 * Math.random()),
+                    //largura: 30 + Math.floor(20 * Math.random()),
+                    largura: 50,
                     altura: 30 + Math.floor(120 * Math.random()),
                     cor: this.cores[Math.floor(5 * Math.random())]
                 });
@@ -103,6 +114,9 @@
                     if (bloco.x < obs.x + obs.largura && bloco.x + bloco.largura >= obs.x && bloco.y + bloco.altura >= chao.y - obs.altura) {
                         estadoAtual = estados.perdeu;
                     }
+
+                    else if (obs.x == 0)
+                        bloco.score++;
 
                     else if (obs.x <= -obs.largura) {
                         this._obs.splice(i, 1);
@@ -137,8 +151,7 @@
 
             else if (estadoAtual == estados.perdeu) {
                 estadoAtual = estados.jogar;
-                bloco.velocidade = 0;
-                bloco.y = 0;
+                bloco.reset();
             }
         }
 
