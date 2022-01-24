@@ -19,7 +19,7 @@
 <body>
     <script>
         //variaveis do jogo
-        var canvas, ctx, ALTURA, LARGURA, estadoAtual, velocidade = 6, frames = 0, maxPulos = 3;
+        var canvas, ctx, ALTURA, LARGURA, estadoAtual, velocidade = 12, frames = 0, maxPulos = 3, record,
 
         estados = {
             jogar: 0,
@@ -44,12 +44,11 @@
             altura: 50,
             largura: 50,
             cor: "#ff4e4e",
-            gravidade: 2.4,
+            gravidade: 3.4,
             velocidade: 0,
-            forcaDoPulo: 29.6,
+            forcaDoPulo: 35.6,
             quantPulos: 0,
             score: 0,
-            record: 0,
 
             atualização: function() {
                 this.velocidade += this.gravidade;
@@ -72,6 +71,12 @@
             reset: function() {
                 this.velocidade = 0;
                 this.y = 0;
+
+                if (this.score > record) {
+                    record = this.score;
+                    localStorage.setItem("record", this.score);
+                }
+
                 this.score = 0;
             },
 
@@ -95,7 +100,7 @@
                     cor: this.cores[Math.floor(5 * Math.random())]
                 });
 
-                this.tempoInsere = 30 + Math.floor(22 * Math.random());
+                this.tempoInsere = 15 + Math.floor(22 * Math.random());
             },
 
             atualização: function() {
@@ -175,6 +180,12 @@
 
             estadoAtual = estados.jogar;
 
+            //Cria um armazenamento local que guarda os dados do "record", ou seja, os dados não vão se perder nem mesmo se o computador for reiniciado, pois estarão guardados no localstorage.
+            record = localStorage.getItem("record");
+
+            if (record == null)
+                record = 0;
+
             roda();
         }
 
@@ -218,6 +229,19 @@
                 ctx.save();
                 ctx.translate(LARGURA / 2, ALTURA / 2);
                 ctx.fillStyle = "#ffffff";
+
+                if (bloco.score > record) {
+                    ctx.fillText("Novo Record!", -150,-65);
+                }
+
+                else if (record < 10)
+                    ctx.fillText("Record " + record, -99, -65);
+
+                else if (record >= 10 && record < 100)
+                    ctx.fillText("Record " + record, -112, -65);
+
+                else
+                    ctx.fillText("Record " + record, -125, -65);
 
                 if (bloco.score < 10)
                     ctx.fillText(bloco.score, -14, 19);
