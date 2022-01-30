@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha engine</title>
+    <script src="sprite.js"></script>
     <style>
         canvas{
             position: absolute;
@@ -19,7 +20,7 @@
 <body>
     <script>
         //variaveis do jogo
-        var canvas, ctx, ALTURA, LARGURA, estadoAtual, velocidade = 12, frames = 0, maxPulos = 3, record,
+        var canvas, ctx, ALTURA, LARGURA, estadoAtual, velocidade = 12, frames = 0, maxPulos = 3, record, img,
 
         estados = {
             jogar: 0,
@@ -185,6 +186,9 @@
 
             if (record == null)
                 record = 0;
+            
+            img = new Image();
+            img.src = "imagens/sheet.png";
 
             roda();
         }
