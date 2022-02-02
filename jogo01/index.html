@@ -31,12 +31,9 @@
         chao = {
             y: 550,
             altura: 50,
-            cor: "#ffdf70",
+            cor: "#ffdf70"
 
-            desenha: function() {
-                ctx.fillStyle = this.cor;
-                ctx.fillRect(0, this.y, LARGURA, this.altura);
-            }
+
         },
 
         bloco = {
@@ -214,10 +211,12 @@
             //desenha a tela
             //ctx.fillStyle = ""; define a cor do elemento
             //ctx.fillRect(); define a posição onde o elemento vai ser desenhado/adicionado
-            ctx.fillStyle = "#7ABDF0";
-            ctx.fillRect(0, 0, LARGURA, ALTURA);
+            //ctx.fillStyle = "#7ABDF0";
+            //ctx.fillRect(0, 0, LARGURA, ALTURA);
+            bg.desenha(0, 0);
+            spriteBoneco.desenha(50, 50);
 
-            ctx.fillStyle = "#ffffff";
+            ctx.fillStyle = "#000000";
             ctx.font = "50px Arial";
             ctx.fillText(bloco.score, 25, 50);
 
@@ -226,13 +225,13 @@
                 ctx.fillRect(LARGURA / 2 - 50, ALTURA / 2 - 50, 100,100)
             }
 
-            else if (estadoAtual == estados.perdeu) {
+            if (estadoAtual == estados.perdeu) {
                 ctx.fillStyle = "red";
                 ctx.fillRect(LARGURA / 2 - 50, ALTURA / 2 - 50, 100,100)
 
                 ctx.save();
                 ctx.translate(LARGURA / 2, ALTURA / 2);
-                ctx.fillStyle = "#ffffff";
+                ctx.fillStyle = "#000000";
 
                 if (bloco.score > record) {
                     ctx.fillText("Novo Record!", -150,-65);
@@ -263,7 +262,7 @@
                 obstaculos.desenha();
             }
 
-            chao.desenha();
+            spriteChao.desenha(0, 550);
             bloco.desenha();
         }
 

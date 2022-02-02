@@ -8,3 +8,7 @@ function Sprite(x, y, largura, altura) {
         ctx.drawImage(img, this.x, this.y, this.largura, this.altura, xCanvas, yCanvas, this.largura, this.altura);
     }
 }
+
+var bg = new Sprite(0, 0, 600, 550),
+spriteChao = new Sprite(0, 550, 600, 50),
+spriteBoneco = new Sprite(208, 623, 50, 50);
