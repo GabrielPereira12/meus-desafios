@@ -11,4 +11,7 @@ function Sprite(x, y, largura, altura) {
 
 var bg = new Sprite(0, 0, 600, 550),
 spriteChao = new Sprite(0, 550, 600, 50),
-spriteBoneco = new Sprite(208, 623, 50, 50);
+bonecoNormal = new Sprite(208, 623, 50, 50),
+bonecoMorto = new Sprite(263, 623, 50, 50),
+bonecoPula = new Sprite(318, 623, 50, 50),
+bonecoCansado = new Sprite(373, 623, 50, 50);

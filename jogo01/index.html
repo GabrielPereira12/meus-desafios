@@ -32,8 +32,6 @@
             y: 550,
             altura: 50,
             cor: "#ffdf70"
-
-
         },
 
         bloco = {
@@ -42,9 +40,9 @@
             altura: 50,
             largura: 50,
             cor: "#ff4e4e",
-            gravidade: 3.4,
+            gravidade: 2.2,
             velocidade: 0,
-            forcaDoPulo: 35.6,
+            forcaDoPulo: 28.4,
             quantPulos: 0,
             score: 0,
 
@@ -214,7 +212,6 @@
             //ctx.fillStyle = "#7ABDF0";
             //ctx.fillRect(0, 0, LARGURA, ALTURA);
             bg.desenha(0, 0);
-            spriteBoneco.desenha(50, 50);
 
             ctx.fillStyle = "#000000";
             ctx.font = "50px Arial";
@@ -263,7 +260,18 @@
             }
 
             spriteChao.desenha(0, 550);
-            bloco.desenha();
+
+            if (estadoAtual == estados.perdeu)
+                bonecoMorto.desenha(bloco.x, bloco.y);
+
+            else if (bloco.y < chao.y - bloco.altura && bloco.quantPulos == maxPulos && estadoAtual == estados.jogando)
+                bonecoCansado.desenha(bloco.x, bloco.y);
+
+            else if (bloco.y < chao.y - bloco.altura && bloco.quantPulos < maxPulos && estadoAtual == estados.jogando)
+                bonecoPula.desenha(bloco.x, bloco.y);
+
+            else 
+                bonecoNormal.desenha(bloco.x, bloco.y);
         }
 
         //inicia o jogo
