@@ -3,8 +3,10 @@ function aleatorio(){
     var val = select.options[select.selectedIndex].value
     var res = document.getElementById('res')
 
-    if (val == "Select")
+    if (val == "Select") {
         alert("Selecione uma classe!!!")
+        res.value = ""
+    }
 
     else if (val == "A") {
         let num1 = 1 + Math.floor(254 * Math.random())
