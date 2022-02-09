@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>IPs Aleatórios</title>
+</head>
+<body>
+    <h1>Gerador de IPs</h1>
+    <section>
+        <div>
+            <p>
+                <select name="Lista de Classes" id="ip">
+                    <option value="Select">Selecionar</option>
+                    <option value="A">Classe A</option>
+                    <option value="B">Classe B</option>
+                    <option value="C">Classe C</option>
+                </select>
+            </p>
+        </div>
+        <div id="dres">
+            <p><input id="gera" type="button" value="Gerar" onclick="aleatorio()"> 
+            <input name="resultado" id="res" type="text" readonly></p>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
