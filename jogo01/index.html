@@ -31,7 +31,15 @@
         chao = {
             y: 550,
             altura: 50,
-            cor: "#ffdf70"
+            cor: "#ffdf70",
+
+            atualização: function() {
+                this.x -= velocidade;
+            },
+
+            desenha: function() {
+                spriteChao.desenha(this.x, this.y);
+            }
         },
 
         bloco = {
@@ -198,11 +206,12 @@
         function atualização() {
             frames++;
 
-            bloco.atualização();
-
             if (estadoAtual == estados.jogando) {
                 obstaculos.atualização();
             }
+
+            chao.atualização();
+            bloco.atualização();
         }
 
         function desenha() {
@@ -218,30 +227,37 @@
             ctx.fillText(bloco.score, 25, 50);
 
             if (estadoAtual == estados.jogar) {
-                ctx.fillStyle = "green";
-                ctx.fillRect(LARGURA / 2 - 50, ALTURA / 2 - 50, 100,100)
+                start.desenha(LARGURA / 2 - 50, ALTURA / 2 - 50)
             }
 
             if (estadoAtual == estados.perdeu) {
                 ctx.fillStyle = "red";
                 ctx.fillRect(LARGURA / 2 - 50, ALTURA / 2 - 50, 100,100)
+                derrota.desenha(135, 242);
 
                 ctx.save();
                 ctx.translate(LARGURA / 2, ALTURA / 2);
                 ctx.fillStyle = "#000000";
 
                 if (bloco.score > record) {
-                    ctx.fillText("Novo Record!", -150,-65);
+                    nRecord.desenha(-150, -240);
                 }
 
-                else if (record < 10)
-                    ctx.fillText("Record " + record, -99, -65);
+                else if (record < 10) {
+                    oRecord.desenha(-165, -200);
+                    ctx.fillText(record, 90, -140);
+                }
 
-                else if (record >= 10 && record < 100)
-                    ctx.fillText("Record " + record, -112, -65);
+                else if (record >= 10 && record < 100) {
+                    oRecord.desenha(-165, -200);
+                    ctx.fillText(record, 75, -140);
+                    
+                }
 
-                else
-                    ctx.fillText("Record " + record, -125, -65);
+                else {
+                    oRecord.desenha(-165, -200);
+                    ctx.fillText(record, 60, -140);
+                }
 
                 if (bloco.score < 10)
                     ctx.fillText(bloco.score, -14, 19);
