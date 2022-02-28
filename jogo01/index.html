@@ -54,6 +54,9 @@
             quantPulos: 0,
             score: 0,
 
+            vidas: 3,
+            colidindo: false,
+
             atualização: function() {
                 this.velocidade += this.gravidade;
                 this.y += this.velocidade;
@@ -75,6 +78,8 @@
             reset: function() {
                 this.velocidade = 0;
                 this.y = 0;
+                this.quantPulos = 3;
+                this.vidas = 3;
 
                 if (this.score > record) {
                     record = this.score;
@@ -104,7 +109,7 @@
                     cor: this.cores[Math.floor(5 * Math.random())]
                 });
 
-                this.tempoInsere = 15 + Math.floor(22 * Math.random());
+                this.tempoInsere = 20 + Math.floor(22 * Math.random());
             },
 
             atualização: function() {
@@ -118,8 +123,18 @@
 
                     obs.x -= velocidade
 
-                    if (bloco.x < obs.x + obs.largura && bloco.x + bloco.largura >= obs.x && bloco.y + bloco.altura >= chao.y - obs.altura) {
-                        estadoAtual = estados.perdeu;
+                    if (!bloco.colidindo && bloco.x < obs.x + obs.largura && bloco.x + bloco.largura >= obs.x && bloco.y + bloco.altura >= chao.y - obs.altura) {
+                        bloco.colidindo = true;
+
+                        setTimeout(function() {
+                            bloco.colidindo = false;
+                        }, 500);
+                        
+                        if (bloco.vidas >= 1)
+                            bloco.vidas--;
+
+                        else
+                            estadoAtual = estados.perdeu;
                     }
                     else if (obs.x == 0)
                         bloco.score++;
@@ -153,7 +168,6 @@
 
             else if (estadoAtual == estados.jogar) {
                 estadoAtual = estados.jogando;
-                bloco.quantPulos = 3;
             }
 
             else if (estadoAtual == estados.perdeu && bloco.y >= 2 * ALTURA) {
@@ -225,6 +239,7 @@
             ctx.fillStyle = "#000000";
             ctx.font = "50px Arial";
             ctx.fillText(bloco.score, 25, 50);
+            ctx.fillText(bloco.vidas, 540, 50);
 
             if (estadoAtual == estados.jogar) {
                 start.desenha(LARGURA / 2 - 50, ALTURA / 2 - 50)
