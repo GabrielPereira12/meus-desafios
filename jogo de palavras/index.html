@@ -7,6 +7,7 @@
     <title>Jogo da palavra</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="estilo.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <h1>Jogo da palavra</h1>
@@ -25,10 +26,13 @@
         <option value="B">B</option>
         <option value="C">C</option>
     </select>
+
+    <br>
+
+    <input type="button" value="Iniciar" onclick="start()">
     </p>
 
-    <div>
-
+    <div id="esconde" hidden>
     </div>
 </body>
 </html>
