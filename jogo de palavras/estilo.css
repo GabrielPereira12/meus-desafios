@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+body{
+    background-color: wheat;
+}
+
+h1{
+    margin-top: 5%;
+    font-size: 3em;
+    text-align: center;
+}
+
+p{
+    margin: 5%;
+    text-align: center;
+}
+
+select{
+    font-size: 1.4em;
+    block-size: 50px;
+}
