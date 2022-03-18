@@ -1,42 +1,25 @@
 @charset "UTF-8";
 
 body{
-    background-color: wheat;
-}
-
-h1{
-    margin-top: 20px;
-    font-size: 3em;
     text-align: center;
-}
-
-p{
-    text-align: center;
-}
-
-select{
-    margin: 1% 0px;
-    font-size: 1.2em;
-    height: 30px;
-    width: 140px;
-}
-
-input{
-    margin-bottom: 20px;
-    font-size: 1em;
-    height: 25px;
-    width: 110px;
+    background-color: #48ad94;
 }
 
 div{
-    margin: auto;
-    background-color: white;
-    height: 350px;
-    width: 800px;
-    border-radius: 30px;
+    margin-left: 40px;
+    font-size: 3em;
 }
 
-p#blocos{
-    font-size: 3em;
-    line-height: 350px;
+li{
+    list-style-type: none;
+}
+
+.alternativa {
+    border-radius: 20px;
+    margin: 25px auto;
+    height: 33px;
+    width: 250px;
+    color: #000;
+    font: 1.6em bold;
+    background-color: #fff;
 }
