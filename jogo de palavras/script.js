@@ -84,10 +84,9 @@ let app = {
     mostraResposta: function(correto){
         let resultDiv = document.getElementById('result');
         let result = '';
-        let res = perguntas[this.atualPos];
-        let resu = res.correta
+        let res = perguntas[this.atualPos].correta;
         // formatar como a mensagem será exibida
-        if(correto == resu){
+        if(correto == res){
             result = 'Resposta Correta!';
         }
         else{
