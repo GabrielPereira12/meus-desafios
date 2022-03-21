@@ -33,7 +33,6 @@ let app = {
         alts.forEach((element, index)=>{
             element.addEventListener('click', ()=>{
                 this.checaResposta(index);
-                this.mostraResposta(index);
             })
         })
         this.atualizaPontos();
@@ -64,10 +63,12 @@ let app = {
             console.log("Correta");
             //corretaSom.play();
             this.totalPontos++;
+            this.mostraResposta(user);
         }
         else{
             console.log("Errada!");
             //erradaSom.play();
+            this.mostraResposta(user);
         }
 
         this.atualizaPontos();
@@ -83,8 +84,10 @@ let app = {
     mostraResposta: function(correto){
         let resultDiv = document.getElementById('result');
         let result = '';
+        let res = perguntas[this.atualPos];
+        let resu = res.correta
         // formatar como a mensagem será exibida
-        if(this.qatual.correta == correto){
+        if(correto == resu){
             result = 'Resposta Correta!';
         }
         else{
