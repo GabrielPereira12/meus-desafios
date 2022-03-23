@@ -16,7 +16,8 @@ body{
 
 #wrapper div, #wrapper ul{
     width: 50%;
-    max-width: 300px;
+    max-width: 310px;
+    min-width: 210px;
 }
 
 ul{
@@ -36,4 +37,8 @@ div#titulo{
     margin-bottom: 5px;
     padding: 10px;
     background-color: #e6e6e6;
+}
+
+div#result, div#pontos{
+    color: #fff;
 }
