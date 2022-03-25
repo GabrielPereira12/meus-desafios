@@ -1,8 +1,13 @@
 @charset "UTF-8";
 
+:root{
+    --branco: #fff;
+    --fundo: #154a69;
+}
+
 body{
     text-align: center;
-    background-color: #58cc02;
+    background-color: var(--fundo);
     font-family: Nunito;
 }
 
@@ -25,7 +30,7 @@ ul{
 }
 
 div#titulo{
-    background-color: #fff;
+    background-color: var(--branco);
     font-size: 2.4em;
     font-weight: bold;
     border-radius: 10px;
@@ -33,7 +38,7 @@ div#titulo{
 }
 
 h1#titulop{
-    color: #fff;
+    color: var(--branco);
     font-size: 3em;
     margin: 0px;
 }
@@ -47,7 +52,7 @@ img{
     border-radius: 5px;
     margin-bottom: 5px;
     padding: 10px;
-    background-color: #e6e6e6;
+    background-color: var(--branco);
 }
 
 .alternativa:hover{
@@ -60,9 +65,23 @@ div#result{
 }
 
 div#result, div#pontos{
-    color: #fff;
+    color: var(--branco);
+}
+
+div#wrapper > a{
+    margin-top: 30px;
 }
 
 footer{
-    color: white;
+    margin-top: 30px;
+    color: var(--branco);
+}
+
+footer > a{
+    text-decoration: none;
+    color: var(--branco);
+}
+
+footer a:hover{
+    color: #000;
 }

@@ -6,21 +6,39 @@ erradaSom.volume -= 0.8;
 
 let perguntas = [
     {
-    titulo: "Gato",
-    alternativas: ["Rat", "Cat", "Gate", "Dog"],
-    correta: 1
+        titulo: "Gato",
+        alternativas: ["Rat", "Cat", "Gate", "Dog"],
+        correta: 1
     },
     
     {
-    titulo: "Alligator",
-    alternativas: ["Motor", "Jaré", "Alicate", "Jacaré"],
-    correta: 3
+        titulo: "Alligator",
+        alternativas: ["Motor", "Jaré", "Alicate", "Jacaré"],
+        correta: 3
     },
     
     {
-    titulo: "Tombstone",
-    alternativas: ["Lápide", "Cascalho", "Pedra", "Cova"],
-    correta: 0
+        titulo: "Tombstone",
+        alternativas: ["Lápide", "Cascalho", "Pedra", "Cova"],
+        correta: 0
+    },
+
+    {
+        titulo: "Fire",
+        alternativas: ["Fila", "Fumaça", "Fogo", "Vento"],
+        correta: 2
+    },
+
+    {
+        titulo: "Garrafa",
+        alternativas: ["Bottle", "Cup", "Tin", "Can"],
+        correta: 0
+    },
+
+    {
+        titulo: "Livro",
+        alternativas: ["Card", "Book", "Note", "Pencil"],
+        correta: 1
     }
 ]
 
@@ -28,6 +46,7 @@ let app = {
     start: function() {
         this.atualPos = 0;
         this.totalPontos = 0;
+        this.arrleatorio(perguntas);
 
         let alts = document.querySelectorAll('.alternativa');
         alts.forEach((element, index)=>{
@@ -60,13 +79,11 @@ let app = {
 
     checaResposta: function(user){
         if(this.qatual.correta == user){
-            console.log("Correta");
             //corretaSom.play();
             this.totalPontos++;
             this.mostraResposta(user);
         }
         else{
-            console.log("Errada!");
             //erradaSom.play();
             this.mostraResposta(user);
         }
@@ -99,6 +116,18 @@ let app = {
             result = `Incorreto! Resposta Correta: ${cTexto}`;
         }
         resultDiv.textContent = result;
+    },
+
+    arrleatorio: function(arr){
+        // Loop em todos os elementos
+        for (let i = arr.length - 1; i > 0; i--) {
+            // Escolhendo elemento aleatório
+            const j = Math.floor(Math.random() * (i + 1));
+            // Reposicionando elemento
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        // Retornando array com aleatoriedade
+        return arr;
     }
 }
 app.start(); 
