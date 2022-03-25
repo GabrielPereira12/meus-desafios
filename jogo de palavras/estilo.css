@@ -33,10 +33,20 @@ div#titulo{
 }
 
 .alternativa {
+    list-style: none;
     border-radius: 5px;
     margin-bottom: 5px;
     padding: 10px;
     background-color: #e6e6e6;
+}
+
+.alternativa:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+div#result{
+    font-weight: bold;
 }
 
 div#result, div#pontos{
