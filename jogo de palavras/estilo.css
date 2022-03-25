@@ -14,7 +14,7 @@ body{
     align-items: center;
 }
 
-#wrapper div, #wrapper ul{
+#wrapper div, #wrapper ul, #wrapper img{
     width: 50%;
     max-width: 310px;
     min-width: 210px;
@@ -30,6 +30,16 @@ div#titulo{
     font-weight: bold;
     border-radius: 10px;
     padding: 10px;
+}
+
+h1#titulop{
+    color: #fff;
+    font-size: 3em;
+    margin: 0px;
+}
+
+img{
+    margin: auto;
 }
 
 .alternativa {
@@ -51,4 +61,8 @@ div#result{
 
 div#result, div#pontos{
     color: #fff;
+}
+
+footer{
+    position: bottom;
 }
