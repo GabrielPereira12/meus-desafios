@@ -51,6 +51,7 @@ let app = {
         let alts = document.querySelectorAll('.alternativa');
         alts.forEach((element, index)=>{
             element.addEventListener('click', ()=>{
+                element.removeEventListener('click', alts)
                 this.checaResposta(index);
             })
         })
@@ -73,24 +74,31 @@ let app = {
     proximaPerg: function(){
         this.atualPos++;
         if(this.atualPos == perguntas.length){
-            this.atualPos = 0;
+            window.location.href = "pont.html"
         }
     },
 
     checaResposta: function(user){
+        let alts = document.querySelectorAll('.alternativa');
+        alts.forEach((element, index)=>{
+            element.removeEventListener('clic', alts, false)
+        })
+        let mc = document.getElementsByClassName('alternativa');
         if(this.qatual.correta == user){
             //corretaSom.play();
             this.totalPontos++;
             this.mostraResposta(user);
+            mc[user].style.backgroundColor = 'green';
         }
         else{
             //erradaSom.play();
             this.mostraResposta(user);
+            mc[user].style.backgroundColor = 'red';
         }
 
-        this.atualizaPontos();
-        this.proximaPerg();
-        this.mostraquestao(perguntas[this.atualPos]);
+        //this.atualizaPontos();
+        //this.proximaPerg();
+        //this.mostraquestao(perguntas[this.atualPos]);
     },
 
     atualizaPontos: function(){

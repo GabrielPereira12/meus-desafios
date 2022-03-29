@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 :root{
-    --branco: #fff;
+    --corpo: #fff;
     --fundo: #154a69;
 }
 
@@ -9,9 +9,11 @@ body{
     text-align: center;
     background-color: var(--fundo);
     font-family: Nunito;
+    color: var(--corpo);
 }
 
 #wrapper{
+    color: #000;
     margin-top: 40px;
     width: 100%;
     display: flex;
@@ -30,7 +32,7 @@ ul{
 }
 
 div#titulo{
-    background-color: var(--branco);
+    background-color: var(--corpo);
     font-size: 2.4em;
     font-weight: bold;
     border-radius: 10px;
@@ -38,7 +40,7 @@ div#titulo{
 }
 
 h1#titulop{
-    color: var(--branco);
+    color: var(--corpo);
     font-size: 3em;
     margin: 0px;
 }
@@ -52,7 +54,7 @@ img{
     border-radius: 5px;
     margin-bottom: 5px;
     padding: 10px;
-    background-color: var(--branco);
+    background-color: var(--corpo);
 }
 
 .alternativa:hover{
@@ -65,7 +67,7 @@ div#result{
 }
 
 div#result, div#pontos{
-    color: var(--branco);
+    color: var(--corpo);
 }
 
 div#wrapper > a{
@@ -74,12 +76,12 @@ div#wrapper > a{
 
 footer{
     margin-top: 30px;
-    color: var(--branco);
+    color: var(--corpo);
 }
 
 footer > a{
     text-decoration: none;
-    color: var(--branco);
+    color: var(--corpo);
 }
 
 footer a:hover{
