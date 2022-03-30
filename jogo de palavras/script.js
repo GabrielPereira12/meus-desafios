@@ -51,7 +51,6 @@ let app = {
         let alts = document.querySelectorAll('.alternativa');
         alts.forEach((element, index)=>{
             element.addEventListener('click', ()=>{
-                element.removeEventListener('click', alts)
                 this.checaResposta(index);
             })
         })
@@ -79,10 +78,9 @@ let app = {
     },
 
     checaResposta: function(user){
-        let alts = document.querySelectorAll('.alternativa');
-        alts.forEach((element, index)=>{
-            element.removeEventListener('clic', alts, false)
-        })
+        let bot = document.getElementById('cont');
+        let escon = document.getElementById('btn');
+        let coi = document.getElementById('pontos');
         let mc = document.getElementsByClassName('alternativa');
         if(this.qatual.correta == user){
             //corretaSom.play();
@@ -95,10 +93,12 @@ let app = {
             this.mostraResposta(user);
             mc[user].style.backgroundColor = 'red';
         }
-
-        //this.atualizaPontos();
+        bot.style.backgroundColor = 'white'
+        escon.hidden = false
+        coi.hidden = false
+        this.atualizaPontos();
         //this.proximaPerg();
-        //this.mostraquestao(perguntas[this.atualPos]);
+        this.mostraquestao(perguntas[this.atualPos]);
     },
 
     atualizaPontos: function(){
