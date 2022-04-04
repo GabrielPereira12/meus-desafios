@@ -73,31 +73,22 @@ let app = {
     proximaPerg: function(){
         this.atualPos++;
         if(this.atualPos == perguntas.length){
-            window.location.href = "pont.html"
+            window.location.href = "fim.html"
         }
     },
 
     checaResposta: function(user){
-        let bot = document.getElementById('cont');
-        let escon = document.getElementById('btn');
-        let coi = document.getElementById('pontos');
-        let mc = document.getElementsByClassName('alternativa');
         if(this.qatual.correta == user){
             //corretaSom.play();
             this.totalPontos++;
             this.mostraResposta(user);
-            mc[user].style.backgroundColor = 'green';
         }
         else{
             //erradaSom.play();
             this.mostraResposta(user);
-            mc[user].style.backgroundColor = 'red';
         }
-        bot.style.backgroundColor = 'white'
-        escon.hidden = false
-        coi.hidden = false
         this.atualizaPontos();
-        //this.proximaPerg();
+        this.proximaPerg();
         this.mostraquestao(perguntas[this.atualPos]);
     },
 
@@ -138,4 +129,5 @@ let app = {
         return arr;
     }
 }
-app.start(); 
+app.start();
+   
