@@ -11,19 +11,19 @@
     <h1>Jogo da velha</h1>
     <table>
         <tr>
-            <td><button value="X1" name="x1">X1</button></td>
-            <td><button value="X2" name="x2">X2</button></td>
-            <td><button value="X3" name="x3">X3</button></td>
+            <td><button value="X1" name="x1">-</button></td>
+            <td><button value="X2" name="x2">-</button></td>
+            <td><button value="X3" name="x3">-</button></td>
         </tr>
         <tr>
-            <td><button value="Y1" name="y1">Y1</button></td>
-            <td><button value="Y2" name="y2">Y2</button></td>
-            <td><button value="Y3" name="y3">Y3</button></td>
+            <td><button value="Y1" name="y1">-</button></td>
+            <td><button value="Y2" name="y2">-</button></td>
+            <td><button value="Y3" name="y3">-</button></td>
         </tr>
         <tr>
-            <td><button value="Z1" name="z1">Z1</button></td>
-            <td><button value="Z2" name="z2">Z2</button></td>
-            <td><button value="Z3" name="z3">Z3</button></td>
+            <td><button value="Z1" name="z1">-</button></td>
+            <td><button value="Z2" name="z2">-</button></td>
+            <td><button value="Z3" name="z3">-</button></td>
         </tr>
         <input type="hidden" value="0" name="click_valida">
         <td><tr>Proximo Jogador: <label id="jogador">X</label></tr></td>
@@ -172,8 +172,81 @@
 
             for(var i = 1; i <= 3; i++){
                 combinacao += $("button[name='x" + i + "']").text();
+
+                if(combinacao == "undefinedX"){
+                    combinacao = "X";
+                }
+
+                combinacao += $("button[name='y" + i + "']").text();
+                combinacao += $("button[name='z" + i + "']").text();
+
+                if(combinacao == "XXX"){
+                    alert('Ganhador X!');
+                    return;
+                }
+                else if(combinacao == "OOO"){
+                    alert('Ganhador O!');
+                    return;
+                }
+                combinacao = "";
             }
         }
+
+        function verificaDiag(){
+            var combinacao;
+            
+            combinacao += $("button[name='x1']").text();
+
+            if(combinacao == "undefinedX"){
+                combinacao = "X";
+            }
+
+            combinacao += $("button[name='y2']").text();
+            combinacao += $("button[name='z3']").text();
+            
+            if(combinacao == "XXX"){
+                alert('Ganhador X!');
+                return;
+            }
+            else if(combinacao == "OOO"){
+                alert('Ganhador O!');
+                return;
+            }
+            combinacao = "";
+
+            combinacao += $("button[name='x3']").text();
+
+            if(combinacao == "undefinedX"){
+                combinacao = "X";
+            }
+            
+            combinacao += $("button[name='y2']").text();
+            combinacao += $("button[name='z1']").text();
+
+            if(combinacao == "XXX"){
+                alert('Ganhador X!');
+                return;
+            }
+            else if(combinacao == "OOO"){
+                alert('Ganhador O!');
+                return;
+            }
+
+        }
+
+        $(document).ready(()=>{
+            $("button").click(()=>{
+                var click = $("input[type='hidden']").val();
+
+                verificaHori();
+                verificaVert();
+                verificaDiag();
+
+                if(parseInt(click) >= 9){
+                    alert("Deu velha!");
+                }
+            })
+        })
     </script>
 </body>
 </html>
