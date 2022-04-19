@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Tic-Tac-Toe</title>
+</head>
+<body>
+    <h1>Jogo da velha</h1>
+    <table>
+        <tr>
+            <td><button value="X1" name="x1">X1</button></td>
+            <td><button value="X2" name="x2">X2</button></td>
+            <td><button value="X3" name="x3">X3</button></td>
+        </tr>
+        <tr>
+            <td><button value="Y1" name="y1">Y1</button></td>
+            <td><button value="Y2" name="y2">Y2</button></td>
+            <td><button value="Y3" name="y3">Y3</button></td>
+        </tr>
+        <tr>
+            <td><button value="Z1" name="z1">Z1</button></td>
+            <td><button value="Z2" name="z2">Z2</button></td>
+            <td><button value="Z3" name="z3">Z3</button></td>
+        </tr>
+        <input type="hidden" value="0" name="click_valida">
+        <td><tr>Proximo Jogador: <label id="jogador">X</label></tr></td>
+    </table>
+
+    <script>
+        function mudarSimbolo(){
+            var simbolo = $("#jogador").text();
+            if(simbolo == "X"){
+                $("#jogador").text('O');
+            }
+            else{
+                $("#jogador").text('X');
+            }
+        }
+
+        $("button[name='x1']").click(function(){
+            var simbolo = $("#jogador").text();
+            var click = parseInt($("input[type='hidden']").val());
+            click = parseInt(click) + 1;
+            $("input[type='hidden']").val(click);
+            $("button[name='x1']").text(simbolo);
+
+            mudarSimbolo();
+        })
+
+        $("button[name='x2']").click(function(){
+            var simbolo = $("#jogador").text();
+            var click = parseInt($("input[type='hidden']").val());
+            click = parseInt(click) + 1;
+            $("input[type='hidden']").val(click);
+            $("button[name='x2']").text(simbolo);
+
+            mudarSimbolo();
+            click++;
+        })
+
+        $("button[name='x3']").click(function(){
+            var simbolo = $("#jogador").text();
+            var click = parseInt($("input[type='hidden']").val());
+            click = parseInt(click) + 1;
+            $("input[type='hidden']").val(click);
+            $("button[name='x3']").text(simbolo);
+
+            mudarSimbolo();
+        })
+
+        $("button[name='y1']").click(function(){
+            var simbolo = $("#jogador").text();
+            var click = parseInt($("input[type='hidden']").val());
+            click = parseInt(click) + 1;
+            $("input[type='hidden']").val(click);
+            $("button[name='y1']").text(simbolo);
+
+            mudarSimbolo();
+        })
+
+        $("button[name='y2']").click(function(){
+            var simbolo = $("#jogador").text();
+            var click = parseInt($("input[type='hidden']").val());
+            click = parseInt(click) + 1;
+            $("input[type='hidden']").val(click);
+            $("button[name='y2']").text(simbolo);
+
+            mudarSimbolo();
+        })
+
+        $("button[name='y3']").click(function(){
+            var simbolo = $("#jogador").text();
+            var click = parseInt($("input[type='hidden']").val());
+            click = parseInt(click) + 1;
+            $("input[type='hidden']").val(click);
+            $("button[name='y3']").text(simbolo);
+
+            mudarSimbolo();
+        })
+
+        $("button[name='z1']").click(function(){
+            var simbolo = $("#jogador").text();
+            var click = parseInt($("input[type='hidden']").val());
+            click = parseInt(click) + 1;
+            $("input[type='hidden']").val(click);
+            $("button[name='z1']").text(simbolo);
+
+            mudarSimbolo();
+        })
+
+        $("button[name='z2']").click(function(){
+            var simbolo = $("#jogador").text();
+            var click = parseInt($("input[type='hidden']").val());
+            click = parseInt(click) + 1;
+            $("input[type='hidden']").val(click);
+            $("button[name='z2']").text(simbolo);
+
+            mudarSimbolo();
+        })
+
+        $("button[name='z3']").click(function(){
+            var simbolo = $("#jogador").text();
+            var click = parseInt($("input[type='hidden']").val());
+            click = parseInt(click) + 1;
+            $("input[type='hidden']").val(click);
+            $("button[name='z3']").text(simbolo);
+
+            mudarSimbolo();
+        })
+
+        function verificaHori(){
+            var combinacao;
+            var simbolo;
+            for(var i = 0; i < 3; i++){
+                if(i == 0){
+                    simbolo = 'x';
+                }
+                else if(i == 1){
+                    simbolo = 'y';
+                }
+                else if(i == 2){
+                    simbolo = 'z';
+                }
+
+                //colunas horizontais
+                for(var j = 1; j <= 3; j++){
+                    combinacao += $( "button[name='" + simbolo + j +  "']").text();
+
+                    if(combinacao == "undefinedX"){
+                        combinacao = "X";
+                    }
+
+                    if(combinacao == "XXX"){
+                        alert('Ganhador X!');
+                        return;
+                    }
+                    else if(combinacao == "OOO"){
+                        alert("Ganhador O!");
+                        return;
+                    }
+                }
+                combinacao = "";
+            }
+        }
+
+        function verificaVert(){
+            var simbolo;
+            var combinacao;
+
+            for(var i = 1; i <= 3; i++){
+                combinacao += $("button[name='x" + i + "']").text();
+            }
+        }
+    </script>
+</body>
+</html>
