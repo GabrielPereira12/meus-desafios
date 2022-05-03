@@ -1,44 +1,50 @@
-const corretaSom = new Audio('sons/correct.mp3');
+/*const corretaSom = new Audio('sons/correct.mp3');
 const erradaSom = new Audio('sons/wrong.mp3')
 corretaSom.volume -= 0.8;
-erradaSom.volume -= 0.8;
+erradaSom.volume -= 0.8;*/
 
 
 let perguntas = [
     {
-        titulo: "Gato",
-        alternativas: ["Rat", "Cat", "Gate", "Dog"],
+        titulo: "Quantos oceanos existem?",
+        alternativas: ["3", "5", "1", "4"],
         correta: 1
     },
     
     {
-        titulo: "Alligator",
-        alternativas: ["Motor", "Jaré", "Alicate", "Jacaré"],
+        titulo: "Qual o maior oceano?",
+        alternativas: ["Atlântico", "Glacial Ártico", "Índico", "Pacífico"],
         correta: 3
     },
     
     {
-        titulo: "Tombstone",
-        alternativas: ["Lápide", "Cascalho", "Pedra", "Cova"],
+        titulo: "Os oceanos cobrem a superfície da terra em cerca de:",
+        alternativas: ["70%", "100%", "28%", "49%"],
         correta: 0
     },
 
     {
-        titulo: "Fire",
-        alternativas: ["Fila", "Fumaça", "Fogo", "Vento"],
+        titulo: "A Fossa das Marianas se encontra no oceano:",
+        alternativas: ["Glacial Ártico", "Atlântico", "Pacífico", "Glacial Antártico"],
         correta: 2
     },
 
     {
-        titulo: "Garrafa",
-        alternativas: ["Bottle", "Cup", "Tin", "Can"],
+        titulo: "Qual a formula quimica da água?",
+        alternativas: ["H2O", "HO2", "2HO", "HO"],
         correta: 0
     },
 
     {
-        titulo: "Livro",
-        alternativas: ["Card", "Book", "Note", "Pencil"],
+        titulo: "Um corpo adulto possui até... de água no corpo",
+        alternativas: ["80%", "65%", "78%", "53%"],
         correta: 1
+    },
+
+    {
+        titulo: "Algas marinhas produzem cerca de ôxigenio... de todo o planeta",
+        alternativas: ["12%", "70%", "99%", "55%"],
+        correta: 3
     }
 ]
 

@@ -42,7 +42,6 @@ ul{
 
 div#titulo{
     margin-top: 40px;
-    max-height: 50px;
     background-color: var(--corpo);
     font-size: 2.4em;
     font-weight: bold;
@@ -50,7 +49,6 @@ div#titulo{
     padding: 10px;
     margin-bottom: 20px;
     min-width: 210px;
-    max-width: 310px;
 }
 
 h1#titulop{
