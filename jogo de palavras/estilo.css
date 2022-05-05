@@ -13,7 +13,7 @@ html, body, * {
 
 body{
     text-align: center;
-    background-color: var(--fundo);
+    background-image: linear-gradient(to right, blue, #048f8f);
     color: var(--corpo);
 }
 

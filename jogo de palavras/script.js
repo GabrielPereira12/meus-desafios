@@ -79,7 +79,14 @@ let app = {
     proximaPerg: function(){
         this.atualPos++;
         if(this.atualPos == perguntas.length){
-            window.location.href = "fim.html"
+            swal({
+                title: 'Parábens, Você completou o Quiz',
+                text: 'Sua pontuação final foi: ' + this.totalPontos,
+                incon: "success",
+                button: "Finalizar"
+            }).then((proxPag) =>{
+                window.location.href = "fim.html";
+            });
         }
     },
 
