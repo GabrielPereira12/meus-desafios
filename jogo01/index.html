@@ -195,6 +195,12 @@
             document.body.appendChild(canvas);
 
             document.addEventListener("mousedown", clique);
+            document.addEventListener("keypress", puloEspaco);
+            function puloEspaco(event){
+                if(event.key == " "){
+                    clique
+                }
+            }
 
             estadoAtual = estados.jogar;
 
