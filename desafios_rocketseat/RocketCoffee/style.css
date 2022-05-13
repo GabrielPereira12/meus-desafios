@@ -46,6 +46,10 @@
         content: ' >';
     }
     
+    hr {
+        width: 100vw;
+    }
+    
     #open_menu:hover {
         border: solid 1px var(--button);
         border-radius: 5px;
@@ -171,7 +175,6 @@ hr{
     border-right: none;
     border-left: none;
     flex: 0 0 1px;
-    width: 100vw;
 }
 
 nav{
