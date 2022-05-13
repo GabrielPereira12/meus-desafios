@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Coffee</title>
+    <link rel="shortcut icon" href="img/logo-desktop.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div id="menu_on">
+            <div id="mobile_opt">
+            <picture>
+            <source media="(min-width: 751px)" srcset="img/logo-desktop.svg" alt="Logo Rocket Seat (desktop)">
+            <img src="img/logo-mobile.svg" alt="Logo Rocket Seat (mobile)">
+            </picture>
+        
+            <img class=" invisible" id="open_menu" class="invisible" src="img/menu-buguer-open.svg" alt="abrir menu">
+            <img class="toggleM invisible" id="close_menu" src="img/menu-buguer-close.svg" alt="fechar menu">
+        </div>
+        <hr class="invisible">
+
+        <div class="mobile_menu menu_visibility">
+            <nav>
+                <a class="link_menu" href="#">Home</a><hr>
+                <a class="link_menu" href="#">Menu</a><hr>
+                <a class="link_menu" href="#">Recompensas</a><hr>
+                <a class="link_menu" href="#">Gift Cards</a><hr>
+                <a class="link_menu" href="#">Lojas</a><hr>
+            </nav>
+        </div>
+        </div>
+        
+
+        <nav class="visible">
+            <a href="#">Home</a>
+            <a href="#">Menu</a>
+            <a href="#">Recompensas</a>
+            <a href="#">Gift Cards</a>
+            <a href="#">Lojas</a>  
+        </nav>
+
+        <p class="invisible">O café que fará seu<br>código decolar para<br>o próximo nível.</p>
+
+        <button id="button_my_coffee">Pegar meu café</button>
+        
+    </header>
+
+    
+
+    <main>
+        <h1 class="main_text">Great Coffe<br>
+            <span class="main_text spotlight">&lt;Great Code/&gt;</span></h1>
+        <img id="space_coffee" src="img/rocket-coffee.png" alt="Rocket Coffee, o café dos programadores">
+    </main>
+
+    <script>
+        const open_menu = document.getElementById('open_menu')
+        const close_menu = document.getElementById('close_menu')
+        const menu = document.querySelector('div.mobile_menu')
+        const body = document.querySelector('body')
+
+        open_menu.addEventListener('click', () => {
+            menu.classList.toggle('menu_visibility')
+            open_menu.classList.toggle('toggleM')
+            close_menu.classList.toggle('toggleM')
+            body.classList.add('fix')
+            console.log(html)
+        })
+
+        close_menu.addEventListener('click', () => {
+            menu.classList.toggle('menu_visibility')
+            close_menu.classList.toggle('toggleM')
+            open_menu.classList.toggle('toggleM')
+            body.classList.remove('fix')
+        })
+
+        window.addEventListener('resize', () => {
+            let windowSize = window.innerWidth.toPrecision()
+            if (windowSize > 751) {
+                if(menu.classList.contains('menu_visibility')){
+                    return
+                }else {
+                    menu.classList.add('menu_visibility')
+                    body.classList.remove('fix')
+                    close_menu.classList.toggle('toggleM')
+                    open_menu.classList.toggle('toggleM')
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

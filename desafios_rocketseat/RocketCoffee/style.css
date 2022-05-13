@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
+
+@media screen and (max-width: 751px){
+    body{
+        background-image: url("img/blur-mobile.png");
+        background-repeat: no-repeat;
+        background-size: 190vw 80vh;
+        background-position: bottom center;
+        background-attachment: fixed;
+    }
+
+    header{
+        flex-direction: column;
+    }
+
+    #mobile_opt {
+        flex: 0 5vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    picture{
+        margin-left: 20px;
+    }
+
+    .main_text{
+        font-size: 2.5rem;
+    }
+
+    #space_coffee { 
+        width: 250px;
+    }
+
+    div > img{
+        margin-right: 20px;
+    }
+
+    #button_my_coffee {
+        flex-basis: 40px;
+        width: 150px;
+    }
+
+    #button_my_coffee::after {
+        content: ' >';
+    }
+    
+    #open_menu:hover {
+        border: solid 1px var(--button);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #close_menu:hover {
+        border: solid 1px var(--button);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .visible {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .invisible{
+        visibility: visible;
+    }
+}
+
+.toggleM {
+    visibility: hidden;
+    position: absolute;
+}
+
+#menu_on {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu_visibility{
+    visibility: hidden;
+}
+    
+.mobile_menu {
+    flex: 1;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 40px;
+    background-color: var(--backgrond);
+    position: fixed;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --backgrond: #000;
+    --text-color: #FFF;
+    --button: #8257E5;
+    --border: #29292E;
+    --border-menu-mobile: #A8A8B3;
+    --text-color-menu-mobile: #E1E1E6;
+    --global-font:'Manrope', sans-serif;
+    --logo-font: 'Orbitron', sans-serif;
+    --line: #3b3b3b;
+}
+
+@media screen and (min-width: 751px){
+    body{
+        background-image: url("img/blur-2.png"), url("img/blur-1.png");
+        background-repeat: no-repeat, no-repeat;
+        background-size: 500px, 500px;
+        background-position: top right, bottom left;
+        background-attachment: fixed;
+    }
+
+    #button_my_coffee {
+        flex-basis: 150px;
+    }
+
+    picture{
+        margin: 0 53px;
+    }
+
+    .main_text{
+        font-size: 4.2rem;
+    }
+
+    #space_coffee { 
+        width: 500px;
+    }
+
+    nav > a:hover {
+        border-color: var(--button);
+
+    }
+
+    .invisible {
+        position: absolute;
+        visibility: hidden;
+    }
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    font-family: var(--global-font);
+    color: var(--text-color);
+    background-color: var(--backgrond);
+
+    
+}
+
+header{
+    margin-top: 30px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+hr{
+    border-bottom: solid 1px var(--line);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    flex: 0 0 1px;
+    width: 100vw;
+}
+
+nav{
+    cursor: default;
+}
+
+nav > a{
+    border-radius: 7px;   
+    padding: 3px 10px;
+    text-decoration: none;
+    color: var(--text-color);
+    border: solid 1px transparent;
+}
+
+#button_my_coffee {
+    flex-wrap: 0;
+    height: 35px;
+    color: var(--text-color);
+    border: solid 1px var(--button);
+    border-radius: 6px;
+    background-color: transparent;
+}
+
+#button_my_coffee:hover{
+    cursor: pointer;
+    background-color: var(--button);
+}
+
+#open_menu {
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+}
+
+#close_menu {
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+}
+
+main {
+    flex: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.spotlight {
+    color: #000;
+    text-shadow: 0px 0px 4px #6d39e4, 0px 0px 2px #6d39e4;
+    
+}
+
+p.invisible {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.link_menu {
+    padding: 0 20px;
+    line-height: 3;
+    border-width: 10px;
+    border-radius: 0px;
+    border-left-color: transparent;
+    transition: border-left-color 0.5s;
+}
+
+.link_menu:hover{
+    border-left-color: #6d39e4;
+}
+
+.fix {
+    position: fixed;
+}
