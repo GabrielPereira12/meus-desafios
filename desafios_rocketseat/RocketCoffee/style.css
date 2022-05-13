@@ -21,6 +21,10 @@
         align-items: center;
     }
 
+    hr{
+        width: 100vw;
+    }
+
     picture{
         margin-left: 20px;
     }
@@ -172,7 +176,6 @@ hr{
     border-right: none;
     border-left: none;
     flex: 0 0 1px;
-    width: 100vw;
 }
 
 nav{
