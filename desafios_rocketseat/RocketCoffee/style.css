@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
 
-@media screen and (max-width: 751px){
+@media screen and (max-width: 750px){
     body{
         background-image: url("img/blur-mobile.png");
         background-repeat: no-repeat;
@@ -154,6 +154,7 @@
 }
 
 body{
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
