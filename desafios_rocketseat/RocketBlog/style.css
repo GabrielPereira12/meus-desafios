@@ -17,6 +17,10 @@
     padding: 0;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 #m_menu {
     display: none;
     position: absolute;
@@ -157,6 +161,7 @@
     padding: 30px var(--margin-mobile) 70px var(--margin-mobile);
     background-color: var(--purple-bg);
     color: var(--white);
+    height: auto;
 }
 
 header {
