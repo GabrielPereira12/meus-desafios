@@ -15,25 +15,25 @@
                 <input type="text" name="search_input" id="s_input" placeholder="Buscar...">
                 <button id="s_button" type="submit"><img src="images/search.svg" alt="Procurar" ></button>
             </div>
-            <img src="images/Cross_icon_(white).svg" alt="Cloe menu" style="width: 25px;">
+            <img id="cls_menu" src="images/Cross_icon_(white).svg" alt="Close menu" style="width: 25px;">
         </div>
 
         <nav>
             <ul>
                 <hr>
-                <a href="#">
+                <a href="#" data-replace="Home">
                     <li>Home</li>
                 </a>
                 <hr>
-                <a href="#">
+                <a href="#" data-replace="Sobre">
                     <li>Sobre</li>
                 </a>
                 <hr>
-                <a href="#">
-                    <li>Categoria</li>
+                <a href="#" data-replace="Categorias">
+                    <li>Categorias</li>
                 </a>
                 <hr>
-                <a href="#">
+                <a href="#" data-replace="Contato">
                     <li>Contato</li>
                 </a>
                 <hr>
@@ -55,7 +55,7 @@
                         <li>Sobre</li>
                     </a>
                     <a href="#">
-                        <li>Categoria</li>
+                        <li>Categorias</li>
                     </a>
                     <a href="#">
                         <li>Contato</li>
@@ -163,16 +163,20 @@
     </div>
 
     <script>
-        const btn_src = document.getElementById('search_button')
-        const search_input = document.getElementById('search_input')
+        const btn_src = document.getElementById('s_button')
+        const search_input = document.getElementById('s_input')
         const menu_btn = document.getElementById('menu_burguer')
         const m_menu = document.getElementById('m_menu')
+        const close_menu = document.getElementById('cls_menu')
+        const body = document.querySelector('body')
 
         window.addEventListener('resize', () => {
             let windowSize = window.innerWidth.toPrecision()
             if (windowSize > 600) {
                 search_input.style.width = "200px";
                 search_input.style.display = "block";
+                body.style.overflowX = "visible"
+                body.style.overflowY = "visible"
             }
         })
 
@@ -181,11 +185,33 @@
             if (windowSize <= 600) {
                 search_input.style.width = "0px";
                 search_input.style.display = "none";
+                setTimeout(() => {
+                m_menu.style.transform = "scaleY(0)"
+                    setTimeout(() => {
+                        m_menu.style.display = "none";
+                    }, 399)
+                }, 200)
             }
         })
 
         menu_btn.addEventListener('click', () => {
             m_menu.style.display = "flex";
+            setTimeout(() => {
+                m_menu.style.transform = "scaleY(1)"
+                body.style.overflowX = "hidden"
+                body.style.overflowY = "hidden"
+            }, 10)
+        })
+
+        close_menu.addEventListener('click', () => {
+            setTimeout(() => {
+                m_menu.style.transform = "scaleY(0)"
+            setTimeout(() => {
+                m_menu.style.display = "none";
+                body.style.overflowX = "visible"
+                body.style.overflowY = "visible"
+            }, 399)
+            }, 200)  
         })
 
         btn_src.addEventListener('mouseenter', () => {
