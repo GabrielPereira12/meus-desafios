@@ -1,0 +1,147 @@
+:root {
+    --text-base: #afb6c2;
+    --text-title: #d4ccb6;
+    --background: #191816;
+    --form-background: #24221f;
+    --primary-color: #ffc632;
+    --white: #fff;
+}
+
+body {
+    overflow-y: hidden;
+}
+
+.logPage {
+    background: var(--background);
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logContainer {
+    background: var(--form-background);
+    color: var(--text-base);
+
+    font-family: 'poppins', sans-serif;
+    font-size: 14px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 40px 60px;
+    flex: 1 25vw;
+    margin: 0px 5%;
+}
+
+.logPage > img {
+    width: 55%;
+}
+
+.logContainer h1 {
+    color: var(--text-title);
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.logSection {
+    margin-top: 30px;
+}
+
+.logSection label {
+    font-weight: bold;
+
+    margin-bottom: 5px;
+}
+
+#input_email, #input_pass {
+    background: transparent;
+    border: solid 2px var(--white);
+    border-radius: 5px;
+
+    margin-bottom: 15px;
+
+    display: flex;
+}
+
+input {
+    color: var(--white);
+    margin-left: 5px;
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkSection {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+
+    width: 107%;
+}
+
+#cheking {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#check_me {
+    width: 20px;
+    height: 20px;
+
+    margin-right: 5px;
+    margin-bottom: 15px;
+
+    filter: invert(90%) brightness(140%);
+}
+
+#input_email, #input_pass {
+    width: 100%;
+    padding: 10px;
+}
+
+#input_email:last-of-type:focus{
+    border-color: var(--primary-color);
+}
+
+#log_in_button {
+    width: 108%;
+    height: 40px;
+
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+
+    font-weight: bold;
+    margin-bottom: 15px;
+
+    transition: filter 0.2s;
+}
+
+#log_in_button:hover {
+    cursor: pointer;
+    filter: brightness(80%);
+}
+
+#regist {
+    color: var(--primary-color);
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
