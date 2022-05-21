@@ -69,6 +69,7 @@ body {
 input {
     color: var(--white);
     margin-left: 5px;
+    width: 100%;
 
     background-color: transparent;
     border: none;
@@ -108,10 +109,6 @@ input {
     padding: 10px;
 }
 
-#input_email:last-of-type:focus{
-    border-color: var(--primary-color);
-}
-
 #log_in_button {
     width: 108%;
     height: 40px;
@@ -144,4 +141,8 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+#input_email:focus-within, #input_pass:focus-within{
+    border-color: var(--primary-color);
 }

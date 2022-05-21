@@ -2,6 +2,25 @@ import './style.css'
 import React, { useState } from 'react'
 
 export function Login() {
+  const [urlMailFocus, setUrlMail] = useState("../../src/images/mail.svg")
+  const [urlPasFocus, setUrlPas] = useState("../../src/images/lock.svg")
+
+  function focusInputEmail() { 
+    setUrlMail("../../src/images/mail-focus.svg")
+  }
+
+  function focusInputPas() {
+    setUrlPas("../../src/images/lock-focus.svg")
+  }
+
+  function blurInputEmail() { 
+    setUrlMail("../../src/images/mail.svg")
+  }
+
+  function blurInputPas() {
+    setUrlPas("../../src/images/lock.svg")
+  }
+
   return (
     <div className="logPage">
         <div className="logContainer">
@@ -11,25 +30,30 @@ export function Login() {
             <div className="inputs">
               <label htmlFor="email_input">E-mail</label>
               <div id="input_email">
-                <img src="../../src/images/mail.svg"/>
+                <img id='mail-focus' src={urlMailFocus}/>
                 <input
-                  type="email" nam
-                  e="email_input"
+                  type="email" 
+                  name="email_input"
                   id="email_input"
+                  className=''
                   placeholder='Digite seu e-mail'
+                  onFocus={focusInputEmail}
+                  onBlur={blurInputEmail}
                   />
               </div>
             </div>
             <div className="inputs">
               <label htmlFor="password_input">Senha</label>
               <div id="input_pass">
-                <img src="../../src/images/lock.svg"/>
+                <img id='lock-focus' src={urlPasFocus}/>
                 <input
                   src='./'
                   type="password"
                   name="password_input"
                   id="password_input"
                   placeholder='Digite sua senha'
+                  onFocus={focusInputPas}
+                  onBlur={blurInputPas}
                   />
               </div>
             </div>
