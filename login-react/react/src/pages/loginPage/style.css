@@ -29,6 +29,11 @@
 
 #login .actions {
     text-align: center;
+    
     margin-top: 10px;
     padding-bottom: 10px;
+}
+
+#login .actions button {
+    margin: 0 5px;
 }

@@ -1,19 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../contexts/auth'
 
 import './style.css'
 
 const LoginPage = () => {
+    const { authenticated, login } = useContext(AuthContext)
+    const navigate = useNavigate()
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log("submit", {email, password})
+
+        login(email, password)
+    }
+
+    const handleFaceLogin = (event) => {
+        navigate('/faceLogin')
     }
 
     return (
         <div id="login">
             <h1 className="title">Login do sistema</h1>
+            <p>{String(authenticated)}</p>
             <form className="form" onSubmit={handleSubmit}>
                 <div className="field">
                     <label htmlFor="email">Email</label>
@@ -37,6 +49,7 @@ const LoginPage = () => {
                 </div>
                 <div className="actions">
                     <button type="submit">Entrar</button>
+                    <button onClick={handleFaceLogin}>Face login</button>
                 </div>
             </form>
         </div>
