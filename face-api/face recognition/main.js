@@ -25,11 +25,16 @@ async function start() {
         document.body.append(image)
         canvas = faceapi.createCanvasFromMedia(image)
         document.body.append(canvas)
+
         const displaySize = { width: image.width, height: image.height}
+        
         faceapi.matchDimensions(canvas, displaySize)
         const detections = await faceapi.detectAllFaces(image).withFaceLandmarks().withFaceDescriptors()
+
         const resizedDetections = faceapi.resizeResults(detections, displaySize)
+
         const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor))
+
         results.forEach((result, i) => {
             const box = resizedDetections[i].detection.box
             const drawBox = new faceapi.draw.DrawBox(box, { label: result.toString()})
@@ -50,7 +55,7 @@ function loadLabeledImages() {
                 descriptions.push(detections.descriptor)
             }
 
-            return new faceapi.LabeledFaceDescriptors(label, descriptions)
+            return new faceapi.labeledFaceDescriptors(label, descriptions)
         })
     )
 }
