@@ -7,6 +7,7 @@ import {
     Navigate
 } from 'react-router-dom';
 
+import RegistPage from './pages/RegistPage'
 import LoginPage from './pages/loginPage';
 import HomePage from './pages/homePage'
 import FaceLoginPage from './pages/FaceLoginPage';
@@ -33,6 +34,7 @@ export const AppRoutes = () => {
                 <Routes>
                     <Route exact path="/login" element={<LoginPage/>} />
                     <Route exact path="/faceLogin" element={<FaceLoginPage/>} />
+                    <Route exact path="/regist" element={<RegistPage/>} />
                     <Route exact path="/" element={<Private><HomePage/></Private>} />
                 </Routes>
             </AuthProvider>

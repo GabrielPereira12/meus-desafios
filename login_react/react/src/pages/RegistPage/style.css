@@ -1,0 +1,41 @@
+#regist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+    padding: 0 32px;
+}
+
+#regist .form {
+    background-color: #f1f1f1;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+
+    text-align: start;
+}
+
+#regist .field {
+    padding-bottom: 10px;
+}
+
+#regist .field label {
+    display: block;
+}
+
+#regist .field input {
+    width: 100%;
+}
+
+#regist .actions {
+    text-align: center;
+    
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+#regist .actions button {
+    margin: 0 5px;
+}

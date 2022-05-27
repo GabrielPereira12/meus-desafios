@@ -20,32 +20,37 @@ export const AuthProvider = ({ children }) => {
         setLoading(false)
     }, [])
 
+    const regist = (name, email, password) => {
+        const data = {
+            name: name,
+            email: email,
+            password: password
+        }
+        localStorage.setItem('user', JSON.stringify(data))
+    }
+
     const login = (email, password) => {
+        let userPassword = JSON.parse(localStorage.getItem('user')).password
 
-        const loggedUser = {
-            id: "123",
-            email,
-        }
-        
-        localStorage.setItem("user", JSON.stringify(loggedUser))
+        let userEmail = JSON.parse(localStorage.getItem('user')).email
 
-        if (password === "secret") {
-            setUser({ loggedUser })
-            navigate("/")
-        }
+        if (password === userPassword && userEmail === email) {
+            setUser('user')
 
-        
+            navigate('/')
+
+        }else return alert("Senha ou Email errados!")
+
     }
 
     const logout = () => {
         console.log("logout")
-        localStorage.removeItem('user')
         setUser(null)
         navigate("/login")
     }
 
     return (
-        <AuthContext.Provider value={{authenticated: !!user, user, loading, login, logout}}>
+        <AuthContext.Provider value={{authenticated: !!user, user, loading, regist, login, logout}}>
             {children}
         </AuthContext.Provider>
     )

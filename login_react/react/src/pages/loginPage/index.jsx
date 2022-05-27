@@ -13,13 +13,9 @@ const LoginPage = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log("submit", {email, password})
-
-        login(email, password)
-    }
-
-    const handleFaceLogin = (event) => {
-        navigate('/faceLogin')
+        if (email !== "" && password !== "") {
+            login(email, password)
+        }else alert("Preencha os campos")
     }
 
     return (
@@ -49,7 +45,14 @@ const LoginPage = () => {
                 </div>
                 <div className="actions">
                     <button type="submit">Entrar</button>
-                    <button onClick={handleFaceLogin}>Face login</button>
+                    <button onClick={() => {
+                        navigate('/faceLogin')
+                    }}>Face login</button>
+                </div>
+                <div className="actions">
+                    <button onClick={() => {
+                        navigate('/regist')
+                    }}>Registar-se</button>
                 </div>
             </form>
         </div>
