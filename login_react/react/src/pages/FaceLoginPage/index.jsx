@@ -40,7 +40,6 @@ const FaceLoginPage = () => {
          const detections = await faceapi.detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptor();
 
          const resizedDetections = faceapi.resizeResults(detections, displaySize)
-         console.log(resizedDetections)
 
          const result = faceMatcher.findBestMatch(resizedDetections.descriptor)
 
