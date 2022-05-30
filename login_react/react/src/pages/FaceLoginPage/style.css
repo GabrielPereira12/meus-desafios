@@ -14,7 +14,7 @@ video {
     border-radius: 15px;
 }
 
-canvas {
+#canvas1 {
     top: 0;
     left: 0;
     position: absolute;

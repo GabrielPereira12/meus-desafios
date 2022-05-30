@@ -1,7 +1,7 @@
 import { useEffect, useRef, useContext } from 'react'
 import { AuthContext } from '../../contexts/auth'
 //import * as faceapi from 'face-api.js' ver isso depois
-import './face-api.min.js'
+import '../../../public/face-api.min.js'
 
 import './style.css'
 
@@ -20,8 +20,7 @@ const FaceLoginPage = () => {
     Promise.all([
       faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
       faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-      faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-      faceapi.nets.faceExpressionNet.loadFromUri('/models')
+      faceapi.nets.faceRecognitionNet.loadFromUri('/models')
    ]).then(() => {
       faceDetection();
    }).catch( err => console.error(err))
@@ -88,6 +87,7 @@ const FaceLoginPage = () => {
       let user = JSON.parse(localStorage.getItem('user'))
 
       if (user.name === facePerson.label) {
+         
          login(user.email, user.password)
       }
    }
@@ -100,7 +100,7 @@ const FaceLoginPage = () => {
                <video crossOrigin='anonymous' ref={videoRef} autoPlay width={540} height={410}>
             </video>
          </div>
-         <canvas ref={canvasRef}
+         <canvas id='canvas1' ref={canvasRef}
          className='app__canvas' width={540} height={410}/>
       </div>
    )
