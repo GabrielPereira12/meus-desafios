@@ -88,8 +88,9 @@ const FaceLoginPage = () => {
 
    const logFace = (facePerson, getLog) => {
       let user = JSON.parse(localStorage.getItem('user'))
-
-      if (user.name === facePerson.label) {
+      if (user === null) {
+         alert("Usuário não encontrado")
+      }else if (user.name === facePerson.label) {
          login(user.email, user.password)
          window.location.reload()
          return getLog = true
