@@ -32,13 +32,12 @@ export const AuthProvider = ({ children }) => {
     const login = (email, password) => {
         let userLog = JSON.parse(localStorage.getItem('user'))
 
-        if (userLog === null) {
+        if (userLog == null) {
             alert("Usuário não registrado")
         }else {
-            let userPassword = user.password
-            let userEmail = user.email
+            let userPassword = userLog.password
+            let userEmail = userLog.email
 
-            console.log(userEmail, userPassword)
             if (password === userPassword && userEmail === email) {
                 setUser('user')
 
