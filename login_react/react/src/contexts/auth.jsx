@@ -30,17 +30,22 @@ export const AuthProvider = ({ children }) => {
     }
 
     const login = (email, password) => {
-        let userPassword = JSON.parse(localStorage.getItem('user')).password
+        let userLog = JSON.parse(localStorage.getItem('user'))
 
-        let userEmail = JSON.parse(localStorage.getItem('user')).email
+        if (userLog === null) {
+            alert("Usuário não registrado")
+        }else {
+            let userPassword = user.password
+            let userEmail = user.email
 
-        if (password === userPassword && userEmail === email) {
-            setUser('user')
+            console.log(userEmail, userPassword)
+            if (password === userPassword && userEmail === email) {
+                setUser('user')
 
-            navigate('/')
+                navigate('/')
 
-        }else return alert("Senha ou Email errados!")
-
+            }else return alert("Senha ou Email errados!")
+        }
     }
 
     const logout = () => {

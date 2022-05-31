@@ -30,7 +30,7 @@ const RegistPage = () => {
             }else {
                 regist(name, email, password)
 
-                navigate('/login')
+                navigate('/faceRegist')
             }
         }else alert("Preencha todos os campos!")
     }

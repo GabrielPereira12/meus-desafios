@@ -1,4 +1,5 @@
 import { useEffect, useRef, useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth'
 //import * as faceapi from 'face-api.js' ver isso depois
 
@@ -6,6 +7,7 @@ import './style.css'
 
 const FaceLoginPage = () => {
    const { login } = useContext(AuthContext)
+   const navigate = useNavigate()
 
    const videoRef = useRef();
    const canvasRef = useRef();
@@ -89,7 +91,9 @@ const FaceLoginPage = () => {
    const logFace = (facePerson, getLog) => {
       let user = JSON.parse(localStorage.getItem('user'))
       if (user === null) {
-         alert("Usuário não encontrado")
+         alert("Usuário não registrado!")
+         navigate('/regist')
+         window.location.reload()
       }else if (user.name === facePerson.label) {
          login(user.email, user.password)
          window.location.reload()
@@ -105,8 +109,9 @@ const FaceLoginPage = () => {
                <video crossOrigin='anonymous' ref={videoRef} autoPlay width={540} height={410}>
             </video>
          </div>
-         <canvas id='canvas1' ref={canvasRef}
-         className='app__canvas' width={540} height={410}/>
+         <div className="canvas">
+            <canvas id='canvas1' ref={canvasRef} width={540} height={410}/>
+         </div>
       </div>
    )
 };
