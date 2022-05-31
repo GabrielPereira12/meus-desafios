@@ -1,7 +1,6 @@
 import { useEffect, useRef, useContext } from 'react'
 import { AuthContext } from '../../contexts/auth'
 //import * as faceapi from 'face-api.js' ver isso depois
-import '../../../public/face-api.min.js'
 
 import './style.css'
 
@@ -23,7 +22,10 @@ const FaceLoginPage = () => {
       faceapi.nets.faceRecognitionNet.loadFromUri('/models')
    ]).then(() => {
       faceDetection();
-   }).catch( err => console.error(err))
+   }).catch((error) => {
+      console.log("!ERRO AO CARREGAR OS MODELS!")
+      console.error(error)
+  })
    };
 
    const faceDetection = async () => {
@@ -34,8 +36,6 @@ const FaceLoginPage = () => {
       faceapi.matchDimensions(canvasRef.current, displaySize)
 
       setInterval(async() => {
-         
-
          const detections = await faceapi.detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptor();
 
          const resizedDetections = faceapi.resizeResults(detections, displaySize)
@@ -48,7 +48,10 @@ const FaceLoginPage = () => {
          const drawBox = new faceapi.draw.DrawBox(box, { label: result.toString()})
          drawBox.draw(canvasRef.current)
 
-         logFace(result)
+         const getLog = false
+         logFace(result, getLog)
+
+         if (getLog) clearInterval()
       }, 1000)
       console.log("Carregado!")
    }
@@ -75,7 +78,7 @@ const FaceLoginPage = () => {
    }
 
    const startVideo = () => {
-      navigator.mediaDevices.getUserMedia({ video: true    })
+      navigator.mediaDevices.getUserMedia({ video: true })
       .then((currentStream) => {
                videoRef.current.srcObject = currentStream;
             }).catch((err) => {
@@ -83,12 +86,13 @@ const FaceLoginPage = () => {
       });
    }
 
-   const logFace = (facePerson) => {
+   const logFace = (facePerson, getLog) => {
       let user = JSON.parse(localStorage.getItem('user'))
 
       if (user.name === facePerson.label) {
-         
          login(user.email, user.password)
+         window.location.reload()
+         return getLog = true
       }
    }
 
