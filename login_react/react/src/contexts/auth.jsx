@@ -2,59 +2,79 @@ import React, { useState, useEffect, createContext } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
+import Axios from 'axios'
+
 
 export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
     const navigate = useNavigate()
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(false)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        const recoveredUser = localStorage.getItem('user')
+        let recoveredUser = JSON.parse(localStorage.getItem('user'))
 
-        if(recoveredUser) {
-            setUser(JSON.parse(recoveredUser))
+        if(recoveredUser !== null) {
+            if(recoveredUser.logado) setUser(true)
         }
 
         setLoading(false)
     }, [])
 
     const regist = (name, email, password) => {
-        const data = {
-            name: name,
-            email: email,
-            password: password
+        const userData = {
+            userName: name,
+            userEmail: email,
+            userPassword: password,
         }
-        localStorage.setItem('user', JSON.stringify(data))
+
+        Axios.post("http://localhost:3001/register", userData)
+    }
+
+    const registFace = (face) => {
+        let userId = JSON.parse(localStorage.getItem('user')).userId
+        console.log(userId)
+        const userFaceData = {
+            userFaceDescription: face,
+            userId: userId
+        }
+
+        Axios.post("http://localhost:3001/faceRegister", userFaceData)
     }
 
     const login = (email, password) => {
-        let userLog = JSON.parse(localStorage.getItem('user'))
+            Axios.get("http://localhost:3001/getUsers").then((response) => {
+                for (var i = 0; i < response.data.length; i++) {
+                    let userId = response.data[i].userId
+                    let userEmail = response.data[i].userEmail
+                    let userPassword = response.data[i].userPassword
 
-        if (userLog == null) {
-            alert("Usuário não registrado")
-        }else {
-            let userPassword = userLog.password
-            let userEmail = userLog.email
+                    if (password === userPassword && email === userEmail) {
+                        
+                        localStorage.setItem('user', JSON.stringify({
+                            userId: userId,
+                            userEmail: userEmail,
+                            logado: true
+                        }))
+                        setUser(true)
 
-            if (password === userPassword && userEmail === email) {
-                setUser('user')
+                        navigate('/')
 
-                navigate('/')
-
-            }else return alert("Senha ou Email errados!")
-        }
+                        break
+                    }
+                }  
+            }) 
     }
 
     const logout = () => {
-        console.log("logout")
-        setUser(null)
+        setUser(false)
+        localStorage.clear()
         navigate("/login")
     }
 
     return (
-        <AuthContext.Provider value={{authenticated: !!user, user, loading, regist, login, logout}}>
+        <AuthContext.Provider value={{authenticated: !!user, user, loading, regist, registFace, login, logout}}>
             {children}
         </AuthContext.Provider>
     )

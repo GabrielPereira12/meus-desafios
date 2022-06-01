@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth'
 
-import './style.css'
+import './styleRegist.css'
 
 const RegistPage = () => {
     const { regist } = useContext(AuthContext)
@@ -23,14 +23,12 @@ const RegistPage = () => {
         event.preventDefault()
         
         if (notBlank(name) && notBlank(email) && notBlank(password) && notBlank(confirmPassword)) {
-            console.log("Todos os inputs foram preenchidos!")
 
             if (password !== confirmPassword) {
                 alert("As senhas não batem!")
             }else {
                 regist(name, email, password)
-
-                navigate('/faceRegist')
+                navigate('/login')
             }
         }else alert("Preencha todos os campos!")
     }

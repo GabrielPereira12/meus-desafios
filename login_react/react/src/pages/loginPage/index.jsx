@@ -53,6 +53,9 @@ const LoginPage = () => {
                     <button onClick={() => {
                         navigate('/regist')
                     }}>Registar-se</button>
+                    <button onClick={() => {
+                        navigate('/faceRegist')
+                    }}>Registar Rosto</button>
                 </div>
             </form>
         </div>

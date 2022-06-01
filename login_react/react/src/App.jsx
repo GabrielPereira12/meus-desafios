@@ -1,3 +1,4 @@
+import 'vite/modulepreload-polyfill'
 import './App.css'
 
 import { AppRoutes } from './AppRoutes'

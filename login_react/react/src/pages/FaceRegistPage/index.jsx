@@ -1,12 +1,21 @@
-import React, { useRef, useEffect} from "react";
+import React, { useRef, useEffect, useContext, } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from '../../contexts/auth'
 
 import './style.css'
 
 function FaceRegistPage () {
+    const navigate = useNavigate()
+    const { registFace } = useContext(AuthContext)
+
     const videoRef = useRef()
     const canvasRef = useRef()
 
     useEffect(() => {
+        if (localStorage.getItem('user') == null) {
+            alert("Faça login antes!")
+            navigate('/login')
+        }
         loadModels()
     }, [])
 
@@ -34,7 +43,6 @@ function FaceRegistPage () {
 
         const detection = await faceapi.detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptor()
 
-        console.log(detection)
         if (detection == undefined) {
             alert("Não há nenhum rosto nesta imagem!")
         }else {
@@ -53,7 +61,8 @@ function FaceRegistPage () {
                 descriptions.push(detections.descriptor)
                 let proxModal = document.getElementById('prox_modal')
                 proxModal.hidden = false
-                console.log(descriptions)
+
+                registFace(JSON.stringify(descriptions))
             }
         }
     }
@@ -85,9 +94,7 @@ function FaceRegistPage () {
                     <div id="prox_modal" hidden>
                         <p>Rosto Verificado com sucesso</p>
                         <button onClick={() => {
-                            modal.style.visibility = "hidden"
-                            let proxModal = document.getElementById('prox_modal')
-                            proxModal.hidden = true
+                            navigate('/login')
                     }}>Próximo</button>
                     </div>
                 </div>
