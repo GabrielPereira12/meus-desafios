@@ -67,6 +67,37 @@ export const AuthProvider = ({ children }) => {
             }) 
     }
 
+    const faceLogin = (userId, userEmail) => {
+
+        localStorage.setItem('user', JSON.stringify({
+            userId: userId,
+            userEmail: userEmail,
+            logado: true
+        }))
+
+        setUser(true)
+        navigate('/')
+    }
+
+    const getEmail = (email) => {
+        Axios.get("http://localhost:3001/getUsers").then((response) => {
+                for (var i = 0; i < response.data.length; i++) {
+                    let userId = response.data[i].userId
+                    let userEmail = response.data[i].userEmail
+                    let userFaceDescription = response.data[i].userFaceDescription
+
+                    if ( email === userEmail) {
+                        localStorage.setItem('userEmailId', JSON.stringify({userEmail: userEmail, userId: userId, userFaceDescription: userFaceDescription}))
+                    
+                        break
+                    }
+                }
+                
+                
+                     
+        })
+    }
+
     const logout = () => {
         setUser(false)
         localStorage.clear()
@@ -74,7 +105,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{authenticated: !!user, user, loading, regist, registFace, login, logout}}>
+        <AuthContext.Provider value={{authenticated: !!user, user, loading, getEmail, regist, registFace, login, faceLogin, logout}}>
             {children}
         </AuthContext.Provider>
     )

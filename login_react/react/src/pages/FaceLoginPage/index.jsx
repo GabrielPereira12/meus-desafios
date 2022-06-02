@@ -1,4 +1,4 @@
-import { useEffect, useRef, useContext } from 'react'
+import { useRef, useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/auth'
 //import * as faceapi from 'face-api.js' ver isso depois
@@ -6,16 +6,13 @@ import { AuthContext } from '../../contexts/auth'
 import './style.css'
 
 const FaceLoginPage = () => {
-   const { login } = useContext(AuthContext)
+   const { faceLogin, getEmail } = useContext(AuthContext)
    const navigate = useNavigate()
 
    const videoRef = useRef();
    const canvasRef = useRef();
 
-   useEffect(() => {
-    startVideo();
-    videoRef && loadModels();
-   }, []);
+   const [email, setEmail] = useState()
 
    const loadModels = () => {
     Promise.all([
@@ -32,7 +29,9 @@ const FaceLoginPage = () => {
 
    const faceDetection = async () => {
       const labeledFaceDescriptors = await loadLabeledImages()
+      console.log(labeledFaceDescriptors)
       const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.7)
+      console.log(faceMatcher)
 
       const displaySize = { width: 540, height: 410 }
       faceapi.matchDimensions(canvasRef.current, displaySize)
@@ -43,13 +42,7 @@ const FaceLoginPage = () => {
          const resizedDetections = faceapi.resizeResults(detections, displaySize)
 
          const result = faceMatcher.findBestMatch(resizedDetections.descriptor)
-
-         canvasRef.current.getContext('2d').clearRect(0, 0, 560, 410)
-
-         const box = resizedDetections.detection.box
-         const drawBox = new faceapi.draw.DrawBox(box, { label: result.toString()})
-         drawBox.draw(canvasRef.current)
-
+         console.log(result)
          const getLog = false
          logFace(result, getLog)
 
@@ -59,24 +52,16 @@ const FaceLoginPage = () => {
    }
 
    const loadLabeledImages = () => {
-      const labels = ["Gabriel"]
+      const desc = JSON.parse(localStorage.getItem('userEmailId')).userFaceDescription
+      const descript = JSON.parse(desc)[0]
+      const descriptions = Object.values(descript)
 
-      return Promise.all(
-         labels.map(async label => {
+      console.log(descriptions)
+      const description = [new Float32Array(descriptions)]
+      console.log(description)
 
-            const descriptions = []
-
-            for (let i = 1; i <= 2; i++) {
-               const img = await faceapi.fetchImage(`/labeled_images/${label}/${i}.jpg`)
-
-               const detections = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptor()
-
-               descriptions.push(detections.descriptor)
-            }
-
-            return new faceapi.LabeledFaceDescriptors(label, descriptions)
-         })
-      )
+      
+      return new faceapi.LabeledFaceDescriptors(email, description)
    }
 
    const startVideo = () => {
@@ -89,16 +74,29 @@ const FaceLoginPage = () => {
    }
 
    const logFace = (facePerson, getLog) => {
-      let user = JSON.parse(localStorage.getItem('user'))
+      let user = JSON.parse(localStorage.getItem('userEmailId'))
       if (user === null) {
-         alert("Usuário não registrado!")
+         alert("Rosto não registrado!")
          navigate('/regist')
          window.location.reload()
-      }else if (user.name === facePerson.label) {
-         login(user.email, user.password)
+      }else if (user.userEmail === facePerson.label) {
+         localStorage.clear()
+         faceLogin(user.userId, user.userEmail)
          window.location.reload()
          return getLog = true
       }
+   }
+
+   const handleEmail = async (event) => {
+      event.preventDefault()
+      getEmail(email)
+
+      let cont = document.getElementById('containerEmail')
+      cont.style.visibility = "hidden"
+      cont.style.position = "absolute"
+
+      startVideo();
+      videoRef && loadModels();
    }
 
 
@@ -106,10 +104,14 @@ const FaceLoginPage = () => {
       <div>
          <div className='login'>
                <h1>Face login</h1>
+               <form onSubmit={handleEmail} id="containerEmail">
+                  <input type="email" name="email" id="email" placeholder='Email' onChange={(event) => setEmail(event.target.value)}/>
+                  <button type='submit'>Conectar</button>
+               </form>
                <video crossOrigin='anonymous' ref={videoRef} autoPlay width={540} height={410}>
             </video>
          </div>
-         <div className="canvas">
+         <div id="canvas">
             <canvas id='canvas1' ref={canvasRef} width={540} height={410}/>
          </div>
       </div>
