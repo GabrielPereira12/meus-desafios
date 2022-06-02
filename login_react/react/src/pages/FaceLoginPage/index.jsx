@@ -55,12 +55,8 @@ const FaceLoginPage = () => {
       const desc = JSON.parse(localStorage.getItem('userEmailId')).userFaceDescription
       const descript = JSON.parse(desc)[0]
       const descriptions = Object.values(descript)
-
-      console.log(descriptions)
       const description = [new Float32Array(descriptions)]
-      console.log(description)
 
-      
       return new faceapi.LabeledFaceDescriptors(email, description)
    }
 
