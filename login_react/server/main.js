@@ -38,11 +38,14 @@ app.post('/faceRegister', (req, res) => {
     })
 })
 
-app.get("/getUsers", (req, res) => {
-    let SQL = "SELECT * from users"
+app.post('/getUsers', (req, res) => {
+    const {userEmail} = req.body
+    const {userPassword} = req.body
 
-    db.query(SQL, (error, result) => {
-        if (error) console.log(error)
+    let SQL = "SELECT * FROM users WHERE userEmail = ? AND userPassword = ?"
+
+    db.query(SQL, [userEmail, userPassword], (error, result) => {
+        if (error) throw error;
         else res.send(result)
     })
 })

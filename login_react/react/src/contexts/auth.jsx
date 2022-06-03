@@ -44,11 +44,16 @@ export const AuthProvider = ({ children }) => {
     }
 
     const login = (email, password) => {
-            Axios.get("http://localhost:3001/getUsers").then((response) => {
-                for (var i = 0; i < response.data.length; i++) {
-                    let userId = response.data[i].userId
-                    let userEmail = response.data[i].userEmail
-                    let userPassword = response.data[i].userPassword
+        const userDataH = {
+            userEmail: email,
+            userPassword: password
+        }
+        Axios.post("http://localhost:3001/getUsers", userDataH).then((response) => {
+                if (response.data[0] === undefined) return alert("Email ou senha incorretos!")
+                else {
+                    let userId = response.data[0].userId
+                    let userEmail = response.data[0].userEmail
+                    let userPassword = response.data[0].userPassword
 
                     if (password === userPassword && email === userEmail) {
                         
@@ -60,11 +65,10 @@ export const AuthProvider = ({ children }) => {
                         setUser(true)
 
                         navigate('/')
-
-                        break
                     }
-                }  
-            }) 
+                }
+                
+        }) 
     }
 
     const faceLogin = (userId, userEmail) => {
