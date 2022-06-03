@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext, } from "react";
+import React, { useState, useRef, useContext, } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../../contexts/auth'
 
@@ -6,18 +6,12 @@ import './style.css'
 
 function FaceRegistPage () {
     const navigate = useNavigate()
-    const { registFace } = useContext(AuthContext)
+    const { registFace, getEmailRegist } = useContext(AuthContext)
+
+    const [email, setEmail] = useState()
 
     const videoRef = useRef()
     const canvasRef = useRef()
-
-    useEffect(() => {
-        if (localStorage.getItem('user') == null) {
-            alert("Faça login antes!")
-            navigate('/login')
-        }
-        loadModels()
-    }, [])
 
     const loadModels = () => {
         Promise.all([
@@ -33,6 +27,16 @@ function FaceRegistPage () {
        })
     }
 
+    const handleEmail = () => {
+        getEmailRegist(email)
+        let emailModal = document.getElementById('email_modal')
+        let videoElement = document.getElementById('video')
+        emailModal.style.visibility = "hidden"
+        videoElement.style.visibility = "visible"
+
+        loadModels()
+    }
+
     const handleShot = async () => {
         let canvas = document.querySelector('canvas')
         let video = document.querySelector('video')
@@ -46,7 +50,7 @@ function FaceRegistPage () {
         if (detection == undefined) {
             alert("Não há nenhum rosto nesta imagem!")
         }else {
-            const modal = document.getElementById('modal')
+            const modal = document.getElementById('check_modal')
             modal.style.visibility = "visible"
 
             const descriptions = []
@@ -81,12 +85,20 @@ function FaceRegistPage () {
         <div>
             <div className="container">
                 <h1>Registo Facial</h1>
+                <div className="container modal" id="email_modal">
+                    <div className="box email_box">
+                        <h1>Conectar a conta</h1>
+                        <label htmlFor="email">Email</label>
+                        <input type="email" name="email" id="email" onChange={(event) => setEmail(event.target.value)}/>
+                        <button id="btn_email" onClick={handleEmail}>Conectar</button>
+                    </div>
+                </div>
 
                 <button id="btn_captura" hidden onClick={handleShot}>Registar Rosto</button>
 
-                <video crossOrigin="anonymous" autoPlay ref={videoRef} width={400} height={300}></video>
+                <video crossOrigin="anonymous" autoPlay ref={videoRef} width={400} height={300} id="video"></video>
             </div>
-            <div className="container" id="modal">
+            <div className="container modal" id="check_modal">
                 <div className="box">
                     <h1>Checar imagem</h1>
                     <canvas id="canvasR" ref={canvasRef}></canvas>
@@ -95,7 +107,7 @@ function FaceRegistPage () {
                         <p>Rosto Verificado com sucesso</p>
                         <button onClick={() => {
                             navigate('/login')
-                    }}>Próximo</button>
+                    }}>Pronto</button>
                     </div>
                 </div>
             </div>

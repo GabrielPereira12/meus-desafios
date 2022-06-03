@@ -12,6 +12,10 @@ video {
     margin: 20px 0;
 }
 
+#video {
+    visibility: hidden;
+}
+
 #canvasR {
     width: 400px;
     height: 300px;
@@ -24,11 +28,27 @@ video {
     margin-bottom: 20px;
 }
 
-#modal {
+.modal {
     left: 0;
     top: 0;
-    background-color: #8b8b8b;
+    background-color: #8b8b8be7;
+}
 
+.email_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 200px;
+}
+
+#email_modal {
+    position: absolute;
+    visibility: visible;
+}
+
+#check_modal {
     position: absolute;
     visibility: hidden;
 }
@@ -36,9 +56,13 @@ video {
 .box {
     background-color: #fff;
     width: 500px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .box button {
     margin-bottom: 20px;
+}
+
+#email {
+    margin-top: 10px;
 }

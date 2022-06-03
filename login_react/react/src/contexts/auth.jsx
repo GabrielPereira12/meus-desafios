@@ -33,8 +33,8 @@ export const AuthProvider = ({ children }) => {
     }
 
     const registFace = (face) => {
-        let userId = JSON.parse(localStorage.getItem('user')).userId
-        console.log(userId)
+        let userId = JSON.parse(localStorage.getItem('userEmailRegistId')).userId
+        
         const userFaceData = {
             userFaceDescription: face,
             userId: userId
@@ -98,6 +98,21 @@ export const AuthProvider = ({ children }) => {
         })
     }
 
+    const getEmailRegist = (email) => {
+        Axios.get("http://localhost:3001/getUsers").then((response) => {
+                for (var i = 0; i < response.data.length; i++) {
+                    let userId = response.data[i].userId
+                    let userEmail = response.data[i].userEmail
+
+                    if ( email === userEmail) {
+                        localStorage.setItem('userEmailRegistId', JSON.stringify({userEmail: userEmail, userId: userId}))
+                    
+                        break
+                    }
+                }
+        })
+    }
+
     const logout = () => {
         setUser(false)
         localStorage.clear()
@@ -105,7 +120,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{authenticated: !!user, user, loading, getEmail, regist, registFace, login, faceLogin, logout}}>
+        <AuthContext.Provider value={{authenticated: !!user, user, loading, getEmail, regist, registFace, login, faceLogin, getEmailRegist, logout}}>
             {children}
         </AuthContext.Provider>
     )
