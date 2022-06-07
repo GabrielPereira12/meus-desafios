@@ -7,8 +7,28 @@
     --white: #fff;
 }
 
+@media (max-width: 872px) {
+    .logPage > img {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .logContainer {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 873px) {
+    .logContainer {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
 body {
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .logPage {
@@ -18,7 +38,7 @@ body {
 
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .logContainer {
@@ -31,13 +51,14 @@ body {
     display: flex;
     flex-direction: column;
 
+    min-width: 200px;
     padding: 40px 60px;
-    flex: 1 25vw;
-    margin: 0px 5%;
 }
 
 .logPage > img {
-    width: 55%;
+    max-width: 55%;
+
+    flex: 1 1 500px;
 }
 
 .logContainer h1 {
@@ -58,7 +79,7 @@ body {
 
 #input_email, #input_pass {
     background: transparent;
-    border: solid 2px var(--white);
+    border: solid 2px var(--text-base);
     border-radius: 5px;
 
     margin-bottom: 15px;
@@ -85,8 +106,14 @@ input {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     width: 107%;
+}
+
+.checkSection p {
+    margin-left: 5px;
+    margin-bottom: 10px;
 }
 
 #cheking {
@@ -101,7 +128,29 @@ input {
     margin-right: 5px;
     margin-bottom: 15px;
 
-    filter: invert(90%) brightness(140%);
+    -webkit-appearance: none;
+
+    border: 2px solid var(--text-base);
+    border-radius: 3px;
+
+    display: inline-block;
+    position: relative;
+}
+
+#check_me:checked {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--background);
+}
+
+#check_me:checked::after {
+    content: '\2714';
+    font-size: 18px;
+    position: absolute;
+    top: -4px;
+    left: 1px;
+
+    color: var(--background);
 }
 
 #input_email, #input_pass {

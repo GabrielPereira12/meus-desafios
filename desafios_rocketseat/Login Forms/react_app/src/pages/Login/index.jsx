@@ -5,22 +5,6 @@ export function Login() {
   const [urlMailFocus, setUrlMail] = useState("../../src/images/mail.svg")
   const [urlPasFocus, setUrlPas] = useState("../../src/images/lock.svg")
 
-  function focusInputEmail() { 
-    setUrlMail("../../src/images/mail-focus.svg")
-  }
-
-  function focusInputPas() {
-    setUrlPas("../../src/images/lock-focus.svg")
-  }
-
-  function blurInputEmail() { 
-    setUrlMail("../../src/images/mail.svg")
-  }
-
-  function blurInputPas() {
-    setUrlPas("../../src/images/lock.svg")
-  }
-
   return (
     <div className="logPage">
         <div className="logContainer">
@@ -37,8 +21,8 @@ export function Login() {
                   id="email_input"
                   className=''
                   placeholder='Digite seu e-mail'
-                  onFocus={focusInputEmail}
-                  onBlur={blurInputEmail}
+                  onFocus={() => setUrlMail("../../src/images/mail-focus.svg")}
+                  onBlur={() => setUrlMail("../../src/images/mail.svg")}
                   />
               </div>
             </div>
@@ -52,8 +36,8 @@ export function Login() {
                   name="password_input"
                   id="password_input"
                   placeholder='Digite sua senha'
-                  onFocus={focusInputPas}
-                  onBlur={blurInputPas}
+                  onFocus={() => setUrlPas("../../src/images/lock-focus.svg")}
+                  onBlur={() => setUrlPas("../../src/images/lock.svg")}
                   />
               </div>
             </div>
@@ -68,7 +52,7 @@ export function Login() {
             <p id='regist'>Não tem uma conta? <a href="#">Registre-se</a></p>
           </div>
       </div>
-      <img src="../../src/images/side-image.jpg" alt="Camp in image"/>
+      <img src="../../src/images/side-image.jpg"/>
     </div>
   )
 }

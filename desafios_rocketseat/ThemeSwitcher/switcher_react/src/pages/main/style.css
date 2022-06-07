@@ -1,0 +1,92 @@
+:root {
+	--dark: #292C35;
+	--light: #F1F1F1;
+	--label: #111;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#body {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light);
+
+    -webkit-transition: background-color .6s;
+    transition: background-color .6s;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 45px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+#sun, #moon {
+    width: 35px;
+    top: 5px;
+    position: absolute;
+
+    cursor: pointer;
+}
+
+#sun {
+    right: 5px;
+}
+
+#moon {
+    left: 5px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: var(--label);
+
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    z-index: 1;
+
+    height: 35px;
+    width: 35px;
+    left: 6px;
+    bottom: 5px;
+
+    background-color: #fff;
+
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider::before{
+    left: 60px;
+}
+
+.round {
+    border-radius: 50px;
+}
