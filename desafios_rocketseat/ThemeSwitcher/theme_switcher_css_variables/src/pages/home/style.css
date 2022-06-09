@@ -1,0 +1,120 @@
+@import "../../contents/theme_variables.css";
+
+.size {
+    font-size: var(--font-size);
+}
+
+.primary-color {
+    color: var(--primary-color);
+}
+
+.color {
+    color: var(--color);
+}
+
+.background {
+    background-color: var(--background);
+}
+
+#body {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transition: 0.3s ease-in
+}
+
+.example-text {
+    max-width: var(--max-width);
+    width: var(--width);
+    min-width: var(--min-width);
+}
+
+.example-text h1, .example-text p {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+.font-selector > form, .color-selector > form , .background-selector > form{
+    margin-top: 20px;
+
+    max-width: var(--max-width);
+    width: var(--width);
+    min-width: var(--min-width);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#small-font-example {
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+#large-font-example {
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.color-container {
+    height: 120px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50px;
+}
+
+.emoji {
+    font-size: 2rem;
+}
+
+.background-box {
+    width: 120px;
+    height: 50px;
+    padding: 5px 10px;
+
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    font-size: 15px;
+}
+
+.background-box span {
+    margin-left: 5px;
+    margin-bottom: 1px;
+}
+
+#light-theme {
+    border: 1px solid #000000;
+    background-color: #ffffff;
+}
+
+#dim-theme {
+    border: 1px solid #ffffff;
+    background-color: #092a45;
+}
+
+#dark-theme {
+    border: 1px solid #ffffff;
+    background-color: #000000;
+}

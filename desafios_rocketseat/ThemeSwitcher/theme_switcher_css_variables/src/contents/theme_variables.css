@@ -1,0 +1,27 @@
+:root {
+    --font-size: 1rem;
+    --color: #000000;
+    --primary-color: #0078d7;
+    --background: #ffffff;
+
+    --width: 90vw;
+    --max-width: 500px;
+    --min-width: 380px;
+}
+
+[data-theme-size = "xs"] { --font-size: 0.7rem }
+[data-theme-size = "sm"] { --font-size: 0.9rem }
+[data-theme-size = "md"] { --font-size: 1rem }
+[data-theme-size = "lg"] { --font-size: 1.1rem }
+[data-theme-size = "xl"] { --font-size: 1.3rem }
+
+[data-theme-color = "blue"] { --primary-color: #0078d7 }
+[data-theme-color = "yellow"] { --primary-color: #ffd03d }
+[data-theme-color = "pink"] { --primary-color: #f495bf }
+[data-theme-color = "purple"] { --primary-color: #886ce4 }
+[data-theme-color = "orange"] { --primary-color: #f7630c }
+[data-theme-color = "green"] { --primary-color: #13a10e }
+
+[data-theme-background = "light" ] { --background: #ffffff; --color: #000000 }
+[data-theme-background = "dim"] { --background: #092a45; --color: #ffffff }
+[data-theme-background = "dark"] { --background: #000000; --color: #ffffff }
