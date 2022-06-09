@@ -1,7 +1,58 @@
+import React, { useState, useEffect } from 'react'
 import './style.css'
 
 const Home = () => {
+    const theme = localStorage.getItem('theme')
+    const isSolar = localStorage.getItem('isSolar')
+
+    const [logo, setLogo] = useState("../../../src/images/logo-black.png")
+    const [solarName, setSolarName] = useState("Solarize")
+
+    useEffect(() => {
+        if (theme) {
+        let body = document.getElementById('body');
+
+        body.classList.add(theme)
+        isSolar && body.classList.add('solar')
+        }
+
+        if (isSolar) setSolarName("Normalize")
+    }, [])
     
+
+    const handleLightMode = () => {
+        let body = document.getElementById('body');
+        body.classList.replace('dark', 'light')
+        localStorage.setItem('theme', 'light')
+
+        setLogo("../../../src/images/logo-black.png")
+    }
+
+    const handleDarkMode = () => {
+        let body = document.getElementById('body');
+        body.classList.replace('light', 'dark')
+
+        localStorage.setItem('theme', 'dark')
+        setLogo("../../../src/images/logo-white.png")
+    }
+
+    const handleSolarMode = () => {
+        let body = document.getElementById('body');
+        if (body.classList.contains('solar')) {
+            body.classList.remove('solar')
+
+            setSolarName("Solarize")
+
+            localStorage.removeItem('isSolar')
+        }
+        else {
+            body.classList.add('solar')
+
+            setSolarName("Normalize")
+
+            localStorage.setItem('isSolar', true)
+        }
+    }
     
     return (
         <div id="body">
@@ -16,15 +67,15 @@ const Home = () => {
                         <a href="#">Theme</a>
                         <ul className="dropdown">
                             <li className="dropdown-item">
-                                <a id="light" href="#">Light</a>
+                                <a id="light" href="#" onClick={handleLightMode}>Light</a>
                             </li>
 
                             <li className="dropdown-item">
-                                <a id="dark" href="#">Dark</a>
+                                <a id="dark" href="#" onClick={handleDarkMode}>Dark</a>
                             </li>
 
                             <li className="dropdown-item">
-                                <a id="solar" href="#">Solar</a>
+                                <a id="solar" href="#" onClick={handleSolarMode}>{solarName}</a>
                             </li>
                         </ul>
                     </li>
@@ -33,7 +84,7 @@ const Home = () => {
             </nav>
 
             <header>
-                    <img src="../../../src/images/logo-150x150.svg" className="logo" />
+                    <img src={logo} className="logo" />
                     <h1>Front-End Web Development,<br/>Fired Up</h1>
 
                     <p>HTML, React, JavaScript, Node.js</p>

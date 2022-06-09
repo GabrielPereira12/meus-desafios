@@ -1,11 +1,65 @@
 :root {
     --font-poppins: 'Poppins', sans-serif;
+
+    --color1: #f8f9fa;
+    --color2: #e9ecef;
+    --color3: #dee2e6;
+    --color4: #ced4da;
+    --color5: #adb5bd;
+    --color6: #6c757d;
+    --color7: #495057;
+    --color8: #343a40;
+    --color9: #212529;
+
+    --blue: #00509d;
+    --purple: #39065b;
+    --green: #52b69a;
+
+    --light: #f8f9fa;
+    --dark: #212529;
+}
+
+.light {
+    --bg: var(--color1) ;
+    --bg-nav: linear-gradient(to right, var(--color2), var(--color3));
+    --bg-header: var(--color4);
+    --bg-dropdown: var(--color1);
+    --text: var(--color9);
+    --border-color: var(--blue);
+    --bg-solar: var(--green);
+}
+
+.dark {
+    --bg: var(--color9);
+    --bg-nav: linear-gradient(to right, var(--color8), var(--color9));
+    --bg-header: var(--color6);
+    --bg-dropdown: var(--color7);
+    --text: var(--color1);
+    --border-color: var(--purple);
+    --bg-solar: var(--blue);
+}
+
+.solar {
+    --color1: #c7f9cc;
+    --color2: #b5e48c;
+    --color3: #76c893;
+    --color4: #52b69a;
+    --color5: #34a0a4;
+    --color6: #168aad;
+    --color7: #1a759f;
+    --color8: #1e6091;
+    --color9: #184e77;
 }
 
 #body {
     margin: 0;
     padding: 0;
     font-family: var(--font-poppins);
+
+    color: var(--text);
+    background-color: var(--bg);
+
+    transition: color 0.5s ease-out, background-color 1s ease-out;
 }
 
 ul {
@@ -22,8 +76,9 @@ a {
     height: 70px;
     width: 100%;
 
-    background: #000;
-    color: #fff;
+    background: var(--bg-nav);
+    color: var(--text);
+    transition: color 0.5s ease-out, background-color 1s ease-out;
 }
 
 .navbar-nav {
@@ -41,8 +96,8 @@ a {
 
     z-index: 2;
 
-    background-color: #0000ff;
-    border: 1px solid #ffffff;
+    background-color: var(--bg-dropdown);
+    border: 1px solid var(--border-color);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 
@@ -80,7 +135,7 @@ a {
     width: 2rem;
     height: 2rem;
 
-    border: 2px solid #ffffff;
+    border: 2px solid var(--border-color);
     border-radius: 50%;
 
     display: inline-block;
@@ -88,14 +143,33 @@ a {
     margin-right: 10px;
 }
 
+#light::before { background-color: var(--light)}
+#dark::before { background-color: var(--dark)}
+#solar::before { background-color: var(--bg-solar)}
+
 header {
     margin-bottom: 16px;
     padding: 16px;
-    padding-bottom: 3.5rem;
+    padding-bottom: 6rem;
 
-    background: #ff0000;
+    background: var(--bg-header);
 
     text-align: center;
 
-    clip-path: polygon(0 0, 0 45%, 50% 100%, 100% 45%, 100% 0);
+    clip-path: polygon(0 0, 0 60%, 50% 100%, 100% 60%, 100% 0);
+    transition: background-color 1s ease-out;
+}
+
+main {
+    padding: 0 40px;
+}
+
+main h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+main p {
+    line-height: 1.8;
+    text-justify: auto;
 }
