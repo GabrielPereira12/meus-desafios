@@ -1,0 +1,117 @@
+
+
+.fa-qrcode::before {
+    background-image: url("../../../src/svg/qrcode.svg");
+    background-size: 15px 17px;
+    background-repeat: no-repeat;
+    background-position-y: 4px;
+
+    display: inline-block;
+
+    width: 30px;
+    height: 20px;
+    content: "";
+}
+
+.fa-link::before {
+    background-image: url("../../../src/svg/link.svg");
+    background-size: 20px 17px;
+    background-repeat: no-repeat;
+    background-position-y: 3px;
+
+    display: inline-block;
+
+    width: 30px;
+    height: 20px;
+    content: "";
+}
+
+.fa-stream::before {
+    background-image: url("../../../src/svg/stream.svg");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position-y: 3px;
+
+    display: inline-block;
+
+    width: 30px;
+    height: 20px;
+    content: "";
+}
+
+.fa-calendar-week::before {
+    background-image: url("../../../src/svg/calendar.svg");
+    background-size: 20px 17px;
+    background-repeat: no-repeat;
+    background-position-y: 3px;
+
+    display: inline-block;
+
+    width: 30px;
+    height: 20px;
+    content: "";
+}
+
+.fa-question-circle::before {
+    background-image: url("../../../src/svg/question-mark.svg");
+    background-size: 20px 17px;
+    background-repeat: no-repeat;
+    background-position-y: 3px;
+
+    display: inline-block;
+
+    width: 30px;
+    height: 20px;
+    content: "";
+}
+
+.fa-sliders-h::before {
+    background-image: url("../../../src/svg/sliders.svg");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position-y: 2px;
+
+    display: inline-block;
+
+    width: 30px;
+    height: 20px;
+    content: "";
+}
+
+.fa-envelope::before {
+    background-image: url("../../../src/svg/envelope.svg");
+    background-size: 20px 17px;
+    background-repeat: no-repeat;
+    background-position-y: 5px;
+
+    display: inline-block;
+
+    width: 30px;
+    height: 20px;
+    content: "";
+}
+
+.fa-bars::after {
+    background-image: url("../../../src/svg/menu_open.svg");
+    background-size: 20px 15px;
+    background-repeat: no-repeat;
+    background-position-x: 4.6px;
+    display: inline-block;
+
+    width: 30px;
+    height: 25px;
+    content: "";
+}
+
+.fa-cross::after {
+    background-image: url("../../../src/svg/cross_close.svg");
+    background-size: 20px 16px;
+    background-repeat: no-repeat;
+    background-position-x: 5px;
+
+    display: inline-block;
+
+    width: 30px;
+    height: 20px;
+    content: "";
+}
