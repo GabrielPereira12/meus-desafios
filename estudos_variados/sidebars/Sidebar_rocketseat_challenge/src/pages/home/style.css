@@ -1,0 +1,170 @@
+:root {
+    --body-bg-color: #dce4e3;
+    --green: #18c29c;
+    --light-green: #8ed7c6;
+    --light-grey: #dce4e3;
+    --text-color: #084236;
+    --main-font: 'Poppins', sans-serif;
+}
+
+*{
+    list-style: none;
+}
+
+#home {
+
+    display: flex;
+
+    background-color: var(--body-bg-color);
+
+    color: var(--text-color);
+    font-family: var(--main-font);
+}
+
+.sidebar {
+    height: 100vh;
+    width: 300px;
+    left: 250px;
+
+    background-color: var(--green);
+    transition: all .4s;
+}
+
+.sbi-logo {
+    width: 90px;
+    margin: 25px 0 0 25px;
+
+    transition: all .4s;
+}
+
+.sbi-search {
+    width: 90px;
+    margin: 25px 0 0 15px;
+
+    transition: all .4s;
+}
+
+label {
+    position: absolute;
+    top: 25px;
+    left: 240px;
+}
+
+label img {
+    width: 35px;
+    cursor: pointer;
+}
+
+#checkbox {
+    display: none;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.sidebar .sbi {
+    padding-left: 5px;
+    margin: 15px 0 25px 20px;
+    transition: all .3s;
+}
+
+.sidebar li.sbi a{
+    display: flex;
+}
+
+.sidebar li.sbi{
+    border-radius: 5px;
+}
+
+.sidebar a span {
+    transition: all .4s;
+}
+
+.sidebar li.sbi:hover {
+    padding-left: 15px;
+}
+
+.sidebar li a img {
+    padding-right: 10px;
+}
+
+.search-box {
+    display: flex;
+    background-color: var(--light-green);
+    border-radius: 10px;
+
+    height: 50px;
+    width: 260px;
+}
+
+.search-box button {
+    margin-left: 10px;
+
+    border: none;
+    outline: none;
+    background: none;
+
+    cursor: pointer;
+}
+
+.search-box #text {
+    width: 100%;
+    margin-left: 10px;
+    padding-right: 10px;
+
+    border: none;
+    outline: none;
+    background: none;
+
+    cursor: text;
+    font-size: 16px;
+}
+
+.user-avatar {
+    width: 70px;
+    height: 50px;
+}
+
+#checkbox:checked ~ .sidebar{
+    width: 75px;
+}
+
+#checkbox:checked ~ .sidebar .sbi-logo{
+    opacity: 0;
+    z-index: -1;
+}
+
+
+#checkbox:checked ~ .sidebar a span{
+    opacity: 0;
+    z-index: -1;
+}
+
+#checkbox:checked ~ .sidebar li.sbi {
+    width: 20px;
+}
+
+#checkbox:checked ~ .sidebar .search-box {
+    width: 45px;
+}
+
+#checkbox:checked ~ .sidebar .search-box button{
+    cursor: unset;
+}
+
+#checkbox:checked ~ .sidebar .search-box input{
+    display: none;
+}
+
+#checkbox:checked ~ .sidebar ul li.sbi:hover {
+    padding-left: 5px;
+}
+
+#checkbox:checked ~ .sidebar ul li.sbi img:hover {
+    border-radius: 5px;
+    padding: 0px;
+    background-color: var(--light-green);
+}
+
